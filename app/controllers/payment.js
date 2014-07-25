@@ -68,7 +68,7 @@ export default Ember.ObjectController.extend({
                         "description": "This is the payment transaction description."
                     }
                 ));
-            record.save();
+            record.save().then(onSuccess, onFail);
             });
         }
     }
