@@ -4,13 +4,13 @@ import Ember from 'ember';
 export default DS.RESTSerializer.extend({
     //To tweak what your sending to the server
     serialize: function(record, options) {
-        //Ember.Logger.debug('fundingInstrument serialize invoked!');
+        Ember.Logger.debug('fundingInstrument serialize invoked!');
         var json = this._super(record, options);
         //Ember.Logger.debug('  fundingInstrument json = ' + JSON.stringify(json));
         return json;
     },
     serializeBelongsTo: function(record, json, relationship) {
-        //Ember.Logger.debug('fundingInstrument serializeBelongsTo invoked!');
+        Ember.Logger.debug('fundingInstrument serializeBelongsTo invoked!');
         var key = relationship.key,
             property = Ember.get(record, key),
             relationshipType = DS.RelationshipChange.determineRelationshipType(record.constructor, relationship);
@@ -24,7 +24,7 @@ export default DS.RESTSerializer.extend({
         }
     },
     serializeHasMany: function(record, json, relationship) {
-        //Ember.Logger.debug('fundingInstrument serializeHasMany invoked!');
+        Ember.Logger.debug('fundingInstrument serializeHasMany invoked!');
         var key = relationship.key,
             property = Ember.get(record, key),
             relationshipType = DS.RelationshipChange.determineRelationshipType(record.constructor, relationship);

@@ -5,12 +5,14 @@ export default Ember.ObjectController.extend({
         payment: function () {
             var self = this;
             var onSuccess = function (model) {
+                Ember.Logger.debug("Success!");
                 self.transitionToRoute('index');
             };
             var onFail = function (model) {
                 retry(function () {
+                    Ember.Logger.debug("Retry invoked!");
                     return model.save();
-                }, 5);
+                }, 0); //NOTE: Retry could be bumped up to 3 or 5 times.
             };
 
             var retry = function (callback, nTimes) {
@@ -34,24 +36,29 @@ export default Ember.ObjectController.extend({
                     "id": 1,
                     "paymentMethod":"credit_card"
                 }));
-                record.get('payer').get('fundingInstruments').addObject(self.store.createRecord('creditCard', {
-                    "id": 1,
-                    "number": "4417119669820331",
-                    "type": "visa",
-                    "expireMonth": 11,
-                    "expireYear": 2018,
-                    "cvv2": "874",
-                    "firstName": "Betsy",
-                    "lastName": "Buyer",
-                    "billingAddress": self.store.createRecord('billingAddress', {
+                record.get('payer').get('fundingInstruments').addObject(self.store.createRecord('fundingInstrument',
+                    {
                         "id": 1,
-                        "line1": "111 First Street",
-                        "city": "Saratoga",
-                        "state": "CA",
-                        "postalCode": "95070",
-                        "countryCode": "US"
-                    })
-                }));
+                        "creditCard": self.store.createRecord('creditCard', {
+                            "id": 1,
+                            "number": "4417119669820331",
+                            "type": "visa",
+                            "expireMonth": 11,
+                            "expireYear": 2018,
+                            "cvv2": "874",
+                            "firstName": "Betsy",
+                            "lastName": "Buyer",
+                            "billingAddress": self.store.createRecord('billingAddress', {
+                                "id": 1,
+                                "line1": "111 First Street",
+                                "city": "Saratoga",
+                                "state": "CA",
+                                "postalCode": "95070",
+                                "countryCode": "US"
+                            })
+                        })
+                }
+            ));
                 record.get('transactions').addObject(self.store.createRecord('transaction',
                     {   "id": 1,
                         "amount": self.store.createRecord('amount', {

@@ -4,13 +4,13 @@ import Ember from 'ember';
 export default DS.RESTSerializer.extend({
     //To tweak what your sending to the server
     serialize: function(record, options) {
-        //Ember.Logger.debug('payer serialize invoked!');
+        Ember.Logger.debug('payer serialize invoked!');
         var json = this._super(record, options);
         //Ember.Logger.debug('  payer json = ' + JSON.stringify(json));
         return json;
     },
     serializeBelongsTo: function(record, json, relationship) {
-        //Ember.Logger.debug('payer serializeBelongsTo invoked!');
+        Ember.Logger.debug('payer serializeBelongsTo invoked!');
         var key = relationship.key,
             property = Ember.get(record, key),
             relationshipType = DS.RelationshipChange.determineRelationshipType(record.constructor, relationship);
@@ -24,7 +24,7 @@ export default DS.RESTSerializer.extend({
         }
     },
     serializeHasMany: function(record, json, relationship) {
-        //Ember.Logger.debug('payer serializeHasMany invoked!');
+        Ember.Logger.debug('payer serializeHasMany invoked!');
         var key = relationship.key,
             property = Ember.get(record, key),
             relationshipType = DS.RelationshipChange.determineRelationshipType(record.constructor, relationship);
