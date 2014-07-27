@@ -21,12 +21,17 @@ export default DS.RESTSerializer.extend({
         //Remove my store's id for payment.  Don't want to send it to paypal.
         delete json.id;
 
-        Ember.Logger.debug('----------------------------------------');
-        Ember.Logger.debug('  payment json = ' + JSON.stringify(json));
-        Ember.Logger.debug('----------------------------------------');
+        //Ember.Logger.debug('----------------------------------------');
+        //Ember.Logger.debug('  payment json = ' + JSON.stringify(json));
+        //Ember.Logger.debug('----------------------------------------');
         return json;
     },
-
+    /*
+     serializeAttribute: function(record, json, key, attributes) {
+        json.attributes = json.attributes || {};
+        this._super(record, json.attributes, key, attributes);
+     },
+     */
     /**
      * To resolve belongsTo relationships.
      * @param record
@@ -88,7 +93,11 @@ export default DS.RESTSerializer.extend({
      */
     normalizePayload: function(type, payload) {
         Ember.Logger.debug('payment normalizePayload invoked!');
+
+        Ember.Logger.debug("payload returned = " + payload);
         //var normalizedPayload = {
+
+
 
         //};
         //return this._super(type, normalizedPayload);

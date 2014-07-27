@@ -6,7 +6,8 @@ export default DS.RESTAdapter.extend({
     namespace: 'v1/payments',
 
     headers: {
-        "Authorization": "Bearer A015pdRcL0sdGQ.I05pvWy1PQCRYnQtPGr.b626H0BdUbKg"
+        "Content-Type": "application/json",
+        "Authorization": "Bearer A015Ox6gIGX.0SOlA5uKHovCCY3NUHU45QQZfgh8zlao4t0"
     },
 
     /**
@@ -34,5 +35,23 @@ export default DS.RESTAdapter.extend({
         //var decamelized = Ember.String.decamelize(type);
         //return Ember.String.pluralize(decamelized);
         return type;
+    },
+    /**
+     * Override createRecord.  Paypal doesn't want the payload wrapped in
+     * the type key 'payment'.
+     * @param store
+     * @param type
+     * @param record
+     * @returns {*}
+     */
+    createRecord: function(store, type, record) {
+        var data = {};
+        var serializer = store.serializerFor(type.typeKey);
+
+        serializer.serializeIntoHash(data, type, record, { includeId: true });
+
+        data = data.payment; //Customization here
+
+        return this.ajax(this.buildURL(type.typeKey), "POST", { data: data });
     }
 });

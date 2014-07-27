@@ -9,6 +9,12 @@ export default DS.RESTSerializer.extend({
         //Ember.Logger.debug('  creditCard json = ' + JSON.stringify(json));
         return json;
     },
+    /*
+     serializeAttribute: function(record, json, key, attributes) {
+        json.attributes = json.attributes || {};
+        this._super(record, json.attributes, key, attributes);
+     },
+     */
     serializeBelongsTo: function(record, json, relationship) {
         //Ember.Logger.debug('creditCard serializeBelongsTo invoked!');
         var key = relationship.key,

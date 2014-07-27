@@ -9,6 +9,12 @@ export default DS.RESTSerializer.extend({
         //Ember.Logger.debug('  billingAddress json = ' + JSON.stringify(json));
         return json;
     },
+    /*
+     serializeAttribute: function(record, json, key, attributes) {
+        json.attributes = json.attributes || {};
+        this._super(record, json.attributes, key, attributes);
+     },
+     */
     serializeBelongsTo: function(record, json, relationship) {
         //Ember.Logger.debug('billingAddress serializeBelongsTo invoked!');
         var key = relationship.key,
