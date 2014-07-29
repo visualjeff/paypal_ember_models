@@ -2,6 +2,19 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.RESTSerializer.extend({
+    primaryKey: 'id',
+
+    /**
+     * Remove any Meta if its necessary.
+     * @param store
+     * @param type
+     * @param payload
+     */
+    extractMeta: function(store, type, payload) {
+        Ember.Logger.debug('payer extractMeta invoked!');
+    },
+
+
     //To tweak what your sending to the server
     serialize: function(record, options) {
         Ember.Logger.debug('payer serialize invoked!');
@@ -49,14 +62,14 @@ export default DS.RESTSerializer.extend({
     keyForAttribute: function(attr) {
         return attr.decamelize();
     },
-
-    //To tweak what your receiving from the server to match your model
-    normalizePayload: function(type, payload) {
+    normalizePayload: function(payload) {
         Ember.Logger.debug('payer normalizePayload invoked!');
-        //var normalizedPayload = {
+        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
 
-        //};
-        //return this._super(type, normalizedPayload);
-        return this._super(type, payload);
+        var normalizedPayload = {};
+
+
+
+        return normalizedPayload;
     }
 });

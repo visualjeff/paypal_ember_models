@@ -5,4 +5,6 @@ export default DS.RESTAdapter.extend({
         //"API_KEY": "secret key",
         //"ANOTHER_HEADER": "Some header value"
     }
+
+
 });

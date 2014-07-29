@@ -7,6 +7,17 @@ import Ember from 'ember';
  * NOTE: .decamelize() was added to the keys.  Paypal doesn't accept camelized keys.
  */
 export default DS.RESTSerializer.extend({
+    primaryKey: 'id',
+
+    /**
+     * Remove any Meta if its necessary.
+     * @param store
+     * @param type
+     * @param payload
+     */
+    extractMeta: function(store, type, payload) {
+        Ember.Logger.debug('payment extractMeta invoked!');
+    },
 
     /**
      * To tweak the data your sending to the paypal.
@@ -85,22 +96,88 @@ export default DS.RESTSerializer.extend({
         return attr.decamelize();
     },
 
-    /**
-     * To tweak what your receiving from the server to match your model
-     * @param type
-     * @param payload
-     * @returns {*}
-     */
-    normalizePayload: function(type, payload) {
+    extract: function(store, type, payload, id, requestType) {
+        Ember.Logger.debug('payment extract invoked!');
+        Ember.Logger.debug('  type = ' + JSON.stringify(type));
+        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
+        Ember.Logger.debug('  id = ' + JSON.stringify(id));
+        Ember.Logger.debug('  requestType = ' + JSON.stringify(requestType));
+
+        this.extractMeta(store, type, payload);
+        /*
+        store.find("payment", id).then(function(payment) {
+            payment.set("paypalId", record.id);
+            payment.set("createTime", record.create_time);
+            payment.set("updateTime", record.update_time);
+            payment.set("state", record.state);
+        });
+        */
+
+        var specificExtract = "extract" + requestType.charAt(0).toUpperCase() + requestType.substr(1);
+        return this[specificExtract](store, type, payload, id, requestType);
+    },
+
+
+    normalizePayload: function(payload) {
         Ember.Logger.debug('payment normalizePayload invoked!');
+        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
+        Ember.Logger.debug('======================================');
 
-        Ember.Logger.debug("payload returned = " + payload);
-        //var normalizedPayload = {
+        var normalizedPayload = {
+            "id": payload.id,
+            "createTime": payload.create_time,
+            "updateTime": payload.update_time,
+            "state": payload.state,
+            "intent": payload.intent,
+            "payer":{
+                "paymentMethod": payload.payer.payment_method,
+                "fundingInstruments":[]
+            },
+            transactions: []
+        };
 
+        payload.payer.funding_instruments.forEach(function(instrument) {
+            var normalizedInstrument = {
+                creditCard: {
+                    "credit_card": {
+                        "type": instrument.credit_card.type,
+                        "number": instrument.credit_card.number,
+                        "expireMonth": instrument.credit_card.expire_month,
+                        "expireYear": instrument.credit_card.expire_year,
+                        "firstName": instrument.credit_card.first_name,
+                        "lastName": instrument.credit_card.last_name,
+                        "billing_address": {
+                            "line1": instrument.credit_card.billing_address.line1,
+                            "city": instrument.credit_card.billing_address.city,
+                            "state": instrument.credit_card.billing_address.state,
+                            "postalCode": instrument.credit_card.billing_address.postal_code,
+                            "countryCode": instrument.credit_card.billing_address.country_code
+                        }
+                    }
+                }
+            }
+            normalizedPayload.payer.fundingInstruments.push(normalizedInstrument);
+        });
 
+        payload.transactions.forEach(function(transaction) {
+            var normalizedTransaction = {
+                amount: {
+                    total: transaction.amount.total,
+                    currency: transaction.amount.currency,
+                    details: {
+                        subtotal: transaction.amount.details.subtotal,
+                        tax: transaction.amount.details.tax,
+                        shipping: transaction.amount.details.shipping
+                    }
+                },
+                description: transaction.description
+            }
+            normalizedPayload.transactions.push(normalizedTransaction);
+        });
 
-        //};
-        //return this._super(type, normalizedPayload);
-        return this._super(type, payload);
+        Ember.Logger.debug('======================================');
+        Ember.Logger.debug('  normalizedPayload = ' + JSON.stringify(normalizedPayload));
+        Ember.Logger.debug('======================================');
+        return normalizedPayload;
     }
 });

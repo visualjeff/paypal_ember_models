@@ -2,6 +2,19 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.RESTSerializer.extend({
+    primaryKey: 'id',
+
+    /**
+     * Remove any Meta if its necessary.
+     * @param store
+     * @param type
+     * @param payload
+     */
+    extractMeta: function(store, type, payload) {
+        Ember.Logger.debug('billingAmount extractMeta invoked!');
+    },
+
+
     //To tweak what your sending to the server
     serialize: function(record, options) {
         //Ember.Logger.debug('billingAddress serialize invoked!');
@@ -49,14 +62,14 @@ export default DS.RESTSerializer.extend({
     keyForAttribute: function(attr) {
         return attr.decamelize();
     },
+    normalizePayload: function(payload) {
+        Ember.Logger.debug('billingAddress normalizePayload invoked!');
+        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
 
-    //To tweak what your receiving from the server to match your model
-    normalizePayload: function(type, payload) {
-        Ember.Logger.debug('billing-address normalizePayload invoked!');
-        //var normalizedPayload = {
+        var normalizedPayload = {};
 
-        //};
-        //return this._super(type, normalizedPayload);
-        return this._super(type, payload);
+
+
+        return normalizedPayload;
     }
 });

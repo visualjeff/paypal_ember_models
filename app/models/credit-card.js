@@ -1,6 +1,8 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  //fundingInstrument: DS.belongsTo('fundingInstrument'),
+
   number: DS.attr('string'),
   type: DS.attr('string'),
   expireMonth: DS.attr('number'),

@@ -2,6 +2,19 @@ import DS from 'ember-data';
 import Ember from 'ember';
 
 export default DS.RESTSerializer.extend({
+    primaryKey: 'id',
+
+    /**
+     * Remove any Meta if its necessary.
+     * @param store
+     * @param type
+     * @param payload
+     */
+    extractMeta: function(store, type, payload) {
+        Ember.Logger.debug('fundingInstruments extractMeta invoked!');
+    },
+
+
     //To tweak what your sending to the server
     serialize: function(record, options) {
         Ember.Logger.debug('fundingInstrument serialize invoked!');
@@ -49,20 +62,14 @@ export default DS.RESTSerializer.extend({
     keyForAttribute: function(attr) {
         return attr.decamelize();
     },
-
-    //To tweak what your receiving from the server to match your model
-    normalizePayload: function(type, payload) {
+    normalizePayload: function(payload) {
         Ember.Logger.debug('fundingInstrument normalizePayload invoked!');
-        //var normalizedPayload = {
-        //    "arrayOfRecords": []
-        //};
-        //payload.fundinginstruments.forEach(function(record) {
-            //var newRecord = {
+        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
 
-            //};
-            //normalizedPayload.arrayOfRecords.push(newRecord);
+        var normalizedPayload = {};
 
-        //});
-        return this._super(type, payload);
+
+
+        return normalizedPayload;
     }
 });
