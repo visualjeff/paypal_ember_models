@@ -26,21 +26,16 @@ export default Ember.ObjectController.extend({
                 }
             };
 
-            this.store.createRecord('payment', {
-                "id": 1,
+            var payment = this.store.createRecord('payment', {
                 "intent": "sale"
             });
 
-            this.store.find('payment', 1).then(function(record){
-                record.set('payer', self.store.createRecord('payer', {
-                    "id": 1,
-                    "paymentMethod":"credit_card"
+                payment.set('payer', self.store.createRecord('payer', {
+                    "paymentMethod": "credit_card"
                 }));
-                record.get('payer').get('fundingInstruments').addObject(self.store.createRecord('fundingInstrument',
+                payment.get('payer').get('fundingInstruments').addObject(self.store.createRecord('fundingInstrument',
                     {
-                        "id": 1,
                         "creditCard": self.store.createRecord('creditCard', {
-                            "id": 1,
                             "number": "4417119669820331",
                             "type": "visa",
                             "expireMonth": 11,
@@ -49,7 +44,6 @@ export default Ember.ObjectController.extend({
                             "firstName": "Betsy",
                             "lastName": "Buyer",
                             "billingAddress": self.store.createRecord('billingAddress', {
-                                "id": 1,
                                 "line1": "111 First Street",
                                 "city": "Saratoga",
                                 "state": "CA",
@@ -59,14 +53,12 @@ export default Ember.ObjectController.extend({
                         })
                 }
             ));
-                record.get('transactions').addObject(self.store.createRecord('transaction',
-                    {   "id": 1,
+                payment.get('transactions').addObject(self.store.createRecord('transaction',
+                    {
                         "amount": self.store.createRecord('amount', {
-                            id: 1,
                             "total": "7.47",
                             "currency": "USD",
                             "details": self.store.createRecord('detail', {
-                                id: 1,
                                 "subtotal": "7.41",
                                 "tax": "0.03",
                                 "shipping": "0.03"
@@ -75,8 +67,8 @@ export default Ember.ObjectController.extend({
                         "description": "This is the payment transaction description."
                     }
                 ));
-            record.save().then(onSuccess, onFail);
-            });
+            payment.save().then(onSuccess);
+
         }
     }
 });

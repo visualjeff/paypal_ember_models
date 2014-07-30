@@ -17,7 +17,7 @@ export default DS.RESTSerializer.extend({
 
     //To tweak what your sending to the server
     serialize: function(record, options) {
-        //Ember.Logger.debug('transaction serialize invoked!');
+        Ember.Logger.debug('transaction serialize invoked!');
         var json = this._super(record, options);
         //Ember.Logger.debug('  transaction json = ' + JSON.stringify(json));
         return json;
@@ -29,7 +29,7 @@ export default DS.RESTSerializer.extend({
      },
      */
     serializeBelongsTo: function(record, json, relationship) {
-        //Ember.Logger.debug('transaction serializeBelongsTo invoked!');
+        Ember.Logger.debug('transaction serializeBelongsTo invoked!');
         var key = relationship.key,
             property = Ember.get(record, key),
             relationshipType = DS.RelationshipChange.determineRelationshipType(record.constructor, relationship);
@@ -43,7 +43,7 @@ export default DS.RESTSerializer.extend({
         }
     },
     serializeHasMany: function(record, json, relationship) {
-        //Ember.Logger.debug('transaction serializeHasMany invoked!');
+        Ember.Logger.debug('transaction serializeHasMany invoked!');
         var key = relationship.key,
             property = Ember.get(record, key),
             relationshipType = DS.RelationshipChange.determineRelationshipType(record.constructor, relationship);
@@ -62,9 +62,23 @@ export default DS.RESTSerializer.extend({
     keyForAttribute: function(attr) {
         return attr.decamelize();
     },
+
+    extract: function(store, type, payload, id, requestType) {
+        Ember.Logger.debug('transaction extract invoked!');
+        //Ember.Logger.debug('  type = ' + JSON.stringify(type));
+        //Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
+        //Ember.Logger.debug('  id = ' + JSON.stringify(id));
+        //Ember.Logger.debug('  requestType = ' + JSON.stringify(requestType));
+
+        this.extractMeta(store, type, payload);
+
+        var specificExtract = "extract" + requestType.charAt(0).toUpperCase() + requestType.substr(1);
+        return this[specificExtract](store, type, payload, id, requestType);
+    },
+
     normalizePayload: function(payload) {
         Ember.Logger.debug('transaction normalizePayload invoked!');
-        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
+        //Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
 
         var normalizedPayload = {};
 

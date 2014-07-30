@@ -50,7 +50,7 @@ export default DS.RESTSerializer.extend({
      * @param relationship
      */
     serializeBelongsTo: function(record, json, relationship) {
-        //Ember.Logger.debug('payment serializeBelongsTo invoked!');
+        Ember.Logger.debug('payment serializeBelongsTo invoked!');
         var key = relationship.key,
             property = Ember.get(record, key),
             relationshipType = DS.RelationshipChange.determineRelationshipType(record.constructor, relationship);
@@ -71,7 +71,7 @@ export default DS.RESTSerializer.extend({
      * @param relationship
      */
     serializeHasMany: function(record, json, relationship) {
-        //Ember.Logger.debug('payment serializeHasMany invoked!');
+        Ember.Logger.debug('payment serializeHasMany invoked!');
         var key = relationship.key,
             property = Ember.get(record, key),
             relationshipType = DS.RelationshipChange.determineRelationshipType(record.constructor, relationship);
@@ -98,20 +98,12 @@ export default DS.RESTSerializer.extend({
 
     extract: function(store, type, payload, id, requestType) {
         Ember.Logger.debug('payment extract invoked!');
-        Ember.Logger.debug('  type = ' + JSON.stringify(type));
-        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
-        Ember.Logger.debug('  id = ' + JSON.stringify(id));
-        Ember.Logger.debug('  requestType = ' + JSON.stringify(requestType));
+        //Ember.Logger.debug('  type = ' + JSON.stringify(type));
+        //Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
+        //Ember.Logger.debug('  id = ' + JSON.stringify(id));
+        //Ember.Logger.debug('  requestType = ' + JSON.stringify(requestType));
 
         this.extractMeta(store, type, payload);
-        /*
-        store.find("payment", id).then(function(payment) {
-            payment.set("paypalId", record.id);
-            payment.set("createTime", record.create_time);
-            payment.set("updateTime", record.update_time);
-            payment.set("state", record.state);
-        });
-        */
 
         var specificExtract = "extract" + requestType.charAt(0).toUpperCase() + requestType.substr(1);
         return this[specificExtract](store, type, payload, id, requestType);
@@ -122,18 +114,19 @@ export default DS.RESTSerializer.extend({
         Ember.Logger.debug('payment normalizePayload invoked!');
         Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
         Ember.Logger.debug('======================================');
-
         var normalizedPayload = {
-            "id": payload.id,
-            "createTime": payload.create_time,
-            "updateTime": payload.update_time,
-            "state": payload.state,
-            "intent": payload.intent,
-            "payer":{
-                "paymentMethod": payload.payer.payment_method,
-                "fundingInstruments":[]
-            },
-            transactions: []
+            payment: {
+                "id": payload.id,
+                "createTime": payload.create_time,
+                "updateTime": payload.update_time,
+                "state": payload.state,
+                "intent": payload.intent,
+                "payer": {
+                    "paymentMethod": payload.payer.payment_method,
+                    "fundingInstruments": []
+                },
+                transactions: []
+            }
         };
 
         payload.payer.funding_instruments.forEach(function(instrument) {
@@ -156,7 +149,7 @@ export default DS.RESTSerializer.extend({
                     }
                 }
             }
-            normalizedPayload.payer.fundingInstruments.push(normalizedInstrument);
+            normalizedPayload.payment.payer.fundingInstruments.push(normalizedInstrument);
         });
 
         payload.transactions.forEach(function(transaction) {
@@ -172,7 +165,7 @@ export default DS.RESTSerializer.extend({
                 },
                 description: transaction.description
             }
-            normalizedPayload.transactions.push(normalizedTransaction);
+            normalizedPayload.payment.transactions.push(normalizedTransaction);
         });
 
         Ember.Logger.debug('======================================');
