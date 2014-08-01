@@ -58,31 +58,98 @@ export default DS.RESTSerializer.extend({
             });
         }
     },
+    /**
+     * To augment attribute keys.
+     * @param attr
+     * @returns {String|*}
+     */
     keyForAttribute: function(attr) {
-        return attr.decamelize();
+        Ember.Logger.debug('billingAddress keyForAttribute invoked!');
+        Ember.Logger.debug('  attr = ' + JSON.stringify(attr));
+        return Ember.String.decamelize(attr);
+    },
+
+    /**
+     * Underscores relationship names and appends "_id" or "_ids" when serializing relationship keys.
+     * @param key
+     * @param kind
+     * @returns {*}
+     */
+    keyForRelationship: function(key, kind) {
+        Ember.Logger.debug('billingAddress keyForAttribute invoked!');
+        Ember.Logger.debug('  key = ' + JSON.stringify(key));
+        Ember.Logger.debug('  kind = ' + JSON.stringify(kind));
+        key = Ember.String.decamelize(key);
+        if (kind === "belongsTo") {
+            return key + "_id";
+        } else if (kind === "hasMany") {
+            return Ember.Inflector.inflector.singularize(key) + "_ids";
+        } else {
+            return key;
+        }
     },
 
     extract: function(store, type, payload, id, requestType) {
         Ember.Logger.debug('billingAddress extract invoked!');
-        //Ember.Logger.debug('  type = ' + JSON.stringify(type));
-        //Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
-        //Ember.Logger.debug('  id = ' + JSON.stringify(id));
-        //Ember.Logger.debug('  requestType = ' + JSON.stringify(requestType));
+        Ember.Logger.debug('  type = ' + JSON.stringify(type));
+        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
+        Ember.Logger.debug('  id = ' + JSON.stringify(id));
+        Ember.Logger.debug('  requestType = ' + JSON.stringify(requestType));
 
-        this.extractMeta(store, type, payload);
+        return this._super(store, type, payload, id, requestType);
+    },
 
-        var specificExtract = "extract" + requestType.charAt(0).toUpperCase() + requestType.substr(1);
-        return this[specificExtract](store, type, payload, id, requestType);
+    extractSingle: function(store, type, payload) {
+        Ember.Logger.debug('billingAddress extracSingle invoked!');
+        Ember.Logger.debug('  type = ' + JSON.stringify(type));
+        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
+        return this._super(store, type, payload);
+    },
+
+    extractArray: function(store, type, arrayPayload) {
+        Ember.Logger.debug('billingAddress extracSingle invoked!');
+        Ember.Logger.debug('  type = ' + JSON.stringify(type));
+        Ember.Logger.debug('  payload = ' + JSON.stringify(arrayPayload));
+        return this._super(store, type, arrayPayload);
+    },
+
+    normalize: function(type, hash, prop) {
+        Ember.Logger.debug('billingAddress normalize invoked!');
+        Ember.Logger.debug('  type = ' + JSON.stringify(type));
+        Ember.Logger.debug('  hash = ' + JSON.stringify(hash));
+        Ember.Logger.debug('  prop = ' + JSON.stringify(prop));
+        return this._super(type, hash, prop);
     },
 
     normalizePayload: function(payload) {
         Ember.Logger.debug('billingAddress normalizePayload invoked!');
-        //Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
+        return this._super(payload);
+    },
 
-        var normalizedPayload = {};
+    normalizeId: function(hash) {
+        Ember.Logger.debug('billingAddress normalizeId invoked!');
+        return this._super(hash);
+    },
 
+    normalizeAttributes: function(type, hash) {
+        Ember.Logger.debug('billingAddress normalizeAttributes invoked!');
+        return this._super(type, hash);
+    },
 
+    normalizeRelationships: function(type, hash) {
+        Ember.Logger.debug('billingAddress normalizeRelationships invoked!');
+        return this._super(type, hash);
+    },
 
-        return normalizedPayload;
+    normalizeUsingDeclaredMapping: function(type, hash) {
+        Ember.Logger.debug('billingAddress normalizeUsingDeclaredMapping invoked!');
+        return this._super(type, hash);
+    },
+
+    applyTransforms: function(type, data) {
+        Ember.Logger.debug('billingAddress applyTransforms invoked!');
+        Ember.Logger.debug('  type = ' + JSON.stringify(type));
+        Ember.Logger.debug('  data = ' + JSON.stringify(data))
+        return this._super(type, data);
     }
 });
