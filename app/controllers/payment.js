@@ -27,48 +27,28 @@ export default Ember.ObjectController.extend({
             };
 
             var payment = this.store.createRecord('payment', {
-                "intent": "sale"
+                "intent": "sale",
+                "paymentMethod": "credit_card",
+                "number": "4417119669820331",
+                "type": "visa",
+                "expireMonth": 11,
+                "expireYear": 2018,
+                "cvv2": "874",
+                "firstName": "Betsy",
+                "lastName": "Buyer",
+                "address": "111 First Street",
+                "city": "Saratoga",
+                "state": "CA",
+                "postalCode": "95070",
+                "countryCode": "US",
+                "total": "7.47",
+                "currency": "USD",
+                "subtotal": "7.41",
+                "tax": "0.03",
+                "shipping": "0.03",
+                "description": "This is the payment transaction description."
             });
-
-                payment.set('payer', self.store.createRecord('payer', {
-                    "paymentMethod": "credit_card"
-                }));
-                payment.get('payer').get('fundingInstruments').addObject(self.store.createRecord('fundingInstrument',
-                    {
-                        "creditCard": self.store.createRecord('creditCard', {
-                            "number": "4417119669820331",
-                            "type": "visa",
-                            "expireMonth": 11,
-                            "expireYear": 2018,
-                            "cvv2": "874",
-                            "firstName": "Betsy",
-                            "lastName": "Buyer",
-                            "billingAddress": self.store.createRecord('billingAddress', {
-                                "line1": "111 First Street",
-                                "city": "Saratoga",
-                                "state": "CA",
-                                "postalCode": "95070",
-                                "countryCode": "US"
-                            })
-                        })
-                }
-            ));
-                payment.get('transactions').addObject(self.store.createRecord('transaction',
-                    {
-                        "amount": self.store.createRecord('amount', {
-                            "total": "7.47",
-                            "currency": "USD",
-                            "details": self.store.createRecord('detail', {
-                                "subtotal": "7.41",
-                                "tax": "0.03",
-                                "shipping": "0.03"
-                            })
-                        }),
-                        "description": "This is the payment transaction description."
-                    }
-                ));
             payment.save().then(onSuccess);
-
         }
     }
 });
