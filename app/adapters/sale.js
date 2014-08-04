@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import Ember from 'ember';
 
 export default DS.RESTAdapter.extend({
     host: 'https://api.sandbox.paypal.com',
@@ -17,9 +16,9 @@ export default DS.RESTAdapter.extend({
      * @returns {*}
      */
     buildURL: function(type, id) {
-        Ember.Logger.debug('Payment adapter information:');
+        Ember.Logger.debug('sale adapter information:');
         var url = this._super(type, id);
-        Ember.Logger.debug('  Payment adapter, url = ' + url);
+        Ember.Logger.debug('  sale adapter, url = ' + url);
         return url;
     },
     /**
@@ -47,7 +46,7 @@ export default DS.RESTAdapter.extend({
         var data = {};
         var serializer = store.serializerFor(type.typeKey);
         serializer.serializeIntoHash(data, type, record, { includeId: true });
-        data = data.payment; //Customization here.  Only send the payment.  Not the wrapped payment.
+        data = data.sale; //Customization here.  Only send the sale data.  Not the wrapped sale.
         return this.ajax(this.buildURL(type.typeKey), "POST", { data: data });
     }
 

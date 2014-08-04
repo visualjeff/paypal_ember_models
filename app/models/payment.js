@@ -28,5 +28,6 @@ export default DS.Model.extend({
     tax: DS.attr('string'),
     shipping: DS.attr('string'),
 
-    description: DS.attr('string')
+    description: DS.attr('string'),
+    transactionId: DS.attr('string')
 });

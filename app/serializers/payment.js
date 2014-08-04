@@ -110,7 +110,8 @@ export default DS.RESTSerializer.extend({
                 subtotal: payload.payment.transactions[0].amount.details.subtotal,
                 tax: payload.payment.transactions[0].amount.details.tax,
                 shipping: payload.payment.transactions[0].amount.details.shipping,
-                description: payload.payment.transactions[0].description
+                description: payload.payment.transactions[0].description,
+                transactionId: payload.payment.transactions[0].related_resources[0].sale.id
             }
         };
         return this._super(normalizedPayload);

@@ -12,7 +12,7 @@ export default Ember.ObjectController.extend({
                 retry(function () {
                     Ember.Logger.debug("Retry invoked!");
                     return model.save();
-                }, 0); //NOTE: Retry could be bumped up to 3 or 5 times.
+                }, 3); //NOTE: Retry could be bumped up to 3 or 5 times.
             };
 
             var retry = function (callback, nTimes) {
@@ -48,7 +48,7 @@ export default Ember.ObjectController.extend({
                 "shipping": "0.03",
                 "description": "This is the payment transaction description."
             });
-            payment.save().then(onSuccess);
+            payment.save().then(onSuccess, onFail);
         }
     }
 });
