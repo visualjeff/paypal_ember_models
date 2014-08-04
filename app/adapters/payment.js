@@ -7,7 +7,7 @@ export default DS.RESTAdapter.extend({
 
     headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer A0156umLXNQiNinJDcSDmWWPQE12zTCSGw39KfgaNBytboQ"
+        "Authorization": "Bearer A015B26BT-UlAK-Ct7scxcKqQerLJhTDW3lQqblgv.Cisps"
     },
 
     /**
@@ -25,13 +25,14 @@ export default DS.RESTAdapter.extend({
         return url;
     },
     /**
-     * Customize type for the url.  Ember pluralizes.  Paypal doesn't want the pluralization
+     * Override to customize the type for the url.  Ember pluralizes by default.  Paypal doesn't want the pluralization
      * here is where we change that.
      *
      * @param type
      * @returns {*}
      */
     pathForType: function(type) {
+        //I've commented out the pluralization below.
         //var decamelized = Ember.String.decamelize(type);
         //return Ember.String.pluralize(decamelized);
         return type;
@@ -47,11 +48,9 @@ export default DS.RESTAdapter.extend({
     createRecord: function(store, type, record) {
         var data = {};
         var serializer = store.serializerFor(type.typeKey);
-
         serializer.serializeIntoHash(data, type, record, { includeId: true });
-
-        data = data.payment; //Customization here
-
+        data = data.payment; //Customization here.  Only send the payment.  Not the wrapped payment.
         return this.ajax(this.buildURL(type.typeKey), "POST", { data: data });
     }
+
 });
