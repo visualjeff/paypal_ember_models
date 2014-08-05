@@ -1,12 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+    results: "",
+
     actions: {
-        payment: function () {
+        payment: function (model) {
             var self = this;
             var onSuccess = function (model) {
                 Ember.Logger.debug("Success!");
-                self.transitionToRoute('index');
+                self.set('results', JSON.stringify(model));
+                //self.transitionToRoute('index');
             };
             var onFail = function (model) {
                 retry(function () {
@@ -27,26 +30,26 @@ export default Ember.ObjectController.extend({
             };
 
             var payment = this.store.createRecord('payment', {
-                "intent": "sale",
-                "paymentMethod": "credit_card",
-                "number": "4417119669820331",
-                "type": "visa",
-                "expireMonth": 11,
-                "expireYear": 2018,
-                "cvv2": "874",
-                "firstName": "Betsy",
-                "lastName": "Buyer",
-                "address": "111 First Street",
-                "city": "Saratoga",
-                "state": "CA",
-                "postalCode": "95070",
-                "countryCode": "US",
-                "total": "7.47",
-                "currency": "USD",
-                "subtotal": "7.41",
-                "tax": "0.03",
-                "shipping": "0.03",
-                "description": "This is the payment transaction description."
+                "intent": model.get('intent'),
+                "paymentMethod": model.get('paymentMethod'),
+                "number": model.get('number'),
+                "type": model.get('type'),
+                "expireMonth": model.get('expireMonth'),
+                "expireYear": model.get('expireYear'),
+                "cvv2": model.get('cvv2'),
+                "firstName": model.get('firstName'),
+                "lastName": model.get('lastName'),
+                "address": model.get('address'),
+                "city": model.get('city'),
+                "state": model.get('state'),
+                "postalCode": model.get('postalCode'),
+                "countryCode": model.get('countryCode'),
+                "total": model.get('total'),
+                "currency": model.get('currency'),
+                "subtotal": model.get('subtotal'),
+                "tax": model.get('tax'),
+                "shipping": model.get('shipping'),
+                "description": model.get('description')
             });
             payment.save().then(onSuccess, onFail);
         }

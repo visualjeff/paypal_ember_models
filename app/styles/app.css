@@ -1,3 +1,32 @@
-html, body {
-  margin: 20px;
+/* Put your CSS here */
+body {
+}
+.is-ajax-loading {
+    visibility: visible;
+    display: block;
+    top: 100px;
+    opacity: 0.9;
+}
+.loading {
+    text-align: center;
+    left: 0;
+    line-height: 200px;
+    margin: auto;
+    margin-top: -100px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+}
+ul.pagination li a.active { /* Copied Foundation's "current" class to Ember's "active" one. */
+    background: #008CBA;
+    color: #fff;
+    font-weight: bold;
+    cursor: default;
+}
+.nobr {
+    white-space: nowrap;
+}
+th a.active { /* Used in Search Results table sorting */
+    color: #f04124;
+    cursor: default;
 }
