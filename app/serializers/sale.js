@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import Ember from 'ember';
 
 export default DS.RESTSerializer.extend({
     primaryKey: 'id',
@@ -34,7 +35,7 @@ export default DS.RESTSerializer.extend({
      */
     extractSingle: function(store, type, payload) {
         Ember.Logger.debug('sale extracSingle invoked!');
-        var payload = { "sale": payload };
+        payload = { "sale": payload };
         return this._super(store, type, payload);
     },
 

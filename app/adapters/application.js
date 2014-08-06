@@ -1,10 +1,11 @@
 import DS from 'ember-data';
 
 export default DS.RESTAdapter.extend({
+    host: 'https://api.sandbox.paypal.com',
+    namespace: 'v1/payments',
+
     headers: {
-        //"API_KEY": "secret key",
-        //"ANOTHER_HEADER": "Some header value"
-    }
-
-
+        "Content-Type": "application/json",
+        "Authorization": "Bearer A015Q1khrLy4BLXU4bhDZyQXBjdiFN6cXLXM2VsrMiSGXGA"
+    },
 });

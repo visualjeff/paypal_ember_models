@@ -1,14 +1,7 @@
 import DS from 'ember-data';
+import ApplicationAdapter from './application';
 
-export default DS.RESTAdapter.extend({
-    host: 'https://api.sandbox.paypal.com',
-    namespace: 'v1/payments',
-
-    headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer A015B26BT-UlAK-Ct7scxcKqQerLJhTDW3lQqblgv.Cisps"
-    },
-
+export default ApplicationAdapter.extend({
     /**
      * Build the url.  Good place to log out what is using in url creation.
      * @param type

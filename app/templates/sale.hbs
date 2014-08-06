@@ -1,9 +1,70 @@
-Results from a paypal's sandbox.
-<br><br>
-Performed a sales lookup:
-<br><br>
-createTime: {{createTime}}<br>
-updateTime: {{updateTime}}<br>
-status: {{status}}<br>
-total: {{total}}<br>
-currency: {{currency}}<br>
+<br>
+<div class="small-8 columns">
+    <div class="panel">
+
+        <h3>Results from paypal for sale 51P59144AK5723702:</h3>
+        <br><br>
+        <br>
+
+        <form>
+            <fieldset>
+
+        <div class="input-wrapper">
+            <label for="createTime">Create time:</label>
+            {{view "textfield"
+            type="text"
+            viewName="createTime"
+            valueBinding="createTime"
+            disabled="true"
+            size="10"
+            }}
+        </div>
+
+        <div class="input-wrapper">
+            <label for="updateTime">Update time:</label>
+            {{view "textfield"
+            type="text"
+            viewName="updateTime"
+            valueBinding="updateTime"
+            disabled="true"
+            size="10"
+            }}
+        </div>
+
+        <div class="input-wrapper">
+            <label for="status">Status:</label>
+            {{view "textfield"
+            type="text"
+            viewName="status"
+            valueBinding="status"
+            disabled="true"
+            size="10"
+            }}
+        </div>
+
+        <div class="input-wrapper">
+            <label for="total">Total:</label>
+            {{view "textfield"
+            type="text"
+            viewName="total"
+            valueBinding="total"
+            disabled="true"
+            size="10"
+            }}
+        </div>
+
+        <div class="input-wrapper">
+            <label for="currency">Currency:</label>
+            {{view "textfield"
+            type="text"
+            viewName="currency"
+            valueBinding="currency"
+            disabled="true"
+            size="10"
+            }}
+        </div>
+
+            </fieldset>
+        </form>
+    </div>
+</div>
