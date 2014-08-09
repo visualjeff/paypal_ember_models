@@ -1,5 +1,6 @@
 import DS from 'ember-data';
-import ApplicationAdapter from './application';
+import Ember from 'ember';
+import ApplicationAdapter from 'paypal/adapters/application';
 
 export default ApplicationAdapter.extend({
     /**

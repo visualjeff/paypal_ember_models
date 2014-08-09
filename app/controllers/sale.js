@@ -1,13 +1,18 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-
+    results: "",
     actions: {
-        refund: function () {
+        refund: function (model) {
             var self = this;
             var onSuccess = function (model) {
                 Ember.Logger.debug("Success!");
-                self.transitionToRoute('index');
+                self.set('results', JSON.stringify(model));
+                //after success force an update for the original sale.
+                self.store.find('sale', model.get('saleId')).then(function(model){
+                  model.reload();
+                });
+                //self.transitionToRoute('index');
             };
             var onFail = function (model) {
                 retry(function () {
@@ -27,9 +32,12 @@ export default Ember.ObjectController.extend({
                 }
             };
 
-
-
-
+            var refund = this.store.createRecord('refund', {
+                "transactionId": model.get('id'),
+                "total": model.get('total'),
+                "currency": model.get('currency')
+            });
+            refund.save().then(onSuccess, onFail);
         }
     }
 });

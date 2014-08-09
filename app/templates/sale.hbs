@@ -2,7 +2,7 @@
 <div class="small-8 columns">
     <div class="panel">
 
-        <h3>Results from paypal for sale 51P59144AK5723702:</h3>
+        <h3>Paypal sale: {{id}}</h3>
         <br><br>
         <br>
 
@@ -63,8 +63,28 @@
             size="10"
             }}
         </div>
-
+        <br>
+        <ul class="button-group right">
+            <button class='button' {{action 'refund' this}}>Request Refund</button>
+        </ul>
             </fieldset>
         </form>
+</div>
+
+
+<div class="panel">
+    <h3>Returned JSON</h3>
+    <br><br>
+    <br>
+    <div class="input-wrapper">
+        <label for="results">Results:</label>
+        {{view "textarea"
+        name="results"
+        viewName="results"
+        valueBinding="results"
+        size="30"
+        rows="8"
+        }}
     </div>
+</div>
 </div>

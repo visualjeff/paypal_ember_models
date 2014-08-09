@@ -7,7 +7,15 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('paypal');
   this.route('payment');
-  this.route('sale', { path: '/sale/:id' } );
+  this.route('sales');
+  this.route('sale', {path: '/sale/:id' });
+  this.route('refund', {path: '/refund/:id'});
+
+
+  //this.resource('sales', { path: '/sales' }, function() {
+  //  this.route('sale', { path: '/sale/:id' });
+  //  this.route('refund');
+  //});
 });
 
 export default Router;

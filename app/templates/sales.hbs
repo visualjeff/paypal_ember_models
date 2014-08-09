@@ -1,0 +1,24 @@
+<br>
+<fieldset>
+    <legend>Sale payments</legend>
+    <table>
+        <thead>
+        <tr>
+            <th width="150">Transaction Id</th>
+            <th width="150">Create Time</th>
+            <th width="150">Total</th>
+            <th width="150">State</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each}}
+            <tr>
+                <td>{{#link-to 'sale' transactionId}}{{transactionId}}{{/link-to}}</td>
+                <td>{{#link-to 'sale' transactionId}}{{createTime}}{{/link-to}}</td>
+                <td>{{#link-to 'sale' transactionId}}${{total}}{{/link-to}}</td>
+                <td>{{#link-to 'sale' transactionId}}{{status}}{{/link-to}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</fieldset>
