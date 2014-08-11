@@ -70,48 +70,34 @@ export default DS.RESTSerializer.extend({
         return serializedPayload;
     },
 
-    /**
-     * Override if you need a root
-     * @param store
-     * @param type
-     * @param payload
-     * @returns {*}
-     */
-    extractSingle: function(store, type, payload) {
-        Ember.Logger.debug('payment extracSingle invoked!');
-        var payload = { "payment": payload };
-        return this._super(store, type, payload);
-    },
-
-
     normalizePayload: function(payload) {
         Ember.Logger.debug('payment normalizePayload invoked!');
         var normalizedPayload = {
             payment: {
-                id: payload.payment.id,
-                createTime: payload.payment.create_time,
-                updateTime: payload.payment.update_time,
-                status: payload.payment.state,
-                intent: payload.payment.intent,
-                paymentMethod: payload.payment.payer.payment_method,
-                number: payload.payment.payer.funding_instruments[0].credit_card.number,
-                type: payload.payment.payer.funding_instruments[0].credit_card.type,
-                expireMonth: payload.payment.payer.funding_instruments[0].credit_card.expire_month,
-                expireYear: payload.payment.payer.funding_instruments[0].credit_card.expire_year,
-                firstName: payload.payment.payer.funding_instruments[0].credit_card.first_name,
-                lastName: payload.payment.payer.funding_instruments[0].credit_card.last_name,
-                address: payload.payment.payer.funding_instruments[0].credit_card.billing_address.line1,
-                city: payload.payment.payer.funding_instruments[0].credit_card.billing_address.city,
-                state: payload.payment.payer.funding_instruments[0].credit_card.billing_address.state,
+                id: payload.id,
+                createTime: payload.create_time,
+                updateTime: payload.update_time,
+                status: payload.state,
+                intent: payload.intent,
+                paymentMethod: payload.payer.payment_method,
+                number: payload.payer.funding_instruments[0].credit_card.number,
+                type: payload.payer.funding_instruments[0].credit_card.type,
+                expireMonth: payload.payer.funding_instruments[0].credit_card.expire_month,
+                expireYear: payload.payer.funding_instruments[0].credit_card.expire_year,
+                firstName: payload.payer.funding_instruments[0].credit_card.first_name,
+                lastName: payload.payer.funding_instruments[0].credit_card.last_name,
+                address: payload.payer.funding_instruments[0].credit_card.billing_address.line1,
+                city: payload.payer.funding_instruments[0].credit_card.billing_address.city,
+                state: payload.payer.funding_instruments[0].credit_card.billing_address.state,
                 postalCode: payload.payment.payer.funding_instruments[0].credit_card.billing_address.postal_code,
-                countryCode: payload.payment.payer.funding_instruments[0].credit_card.billing_address.country_code,
-                total: payload.payment.transactions[0].amount.total,
-                currency: payload.payment.transactions[0].amount.currency,
-                subtotal: payload.payment.transactions[0].amount.details.subtotal,
-                tax: payload.payment.transactions[0].amount.details.tax,
-                shipping: payload.payment.transactions[0].amount.details.shipping,
-                description: payload.payment.transactions[0].description,
-                transactionId: payload.payment.transactions[0].related_resources[0].sale.id
+                countryCode: payload.payer.funding_instruments[0].credit_card.billing_address.country_code,
+                total: payload.transactions[0].amount.total,
+                currency: payload.transactions[0].amount.currency,
+                subtotal: payload.transactions[0].amount.details.subtotal,
+                tax: payload.transactions[0].amount.details.tax,
+                shipping: payload.transactions[0].amount.details.shipping,
+                description: payload.transactions[0].description,
+                transactionId: payload.transactions[0].related_resources[0].sale.id
             }
         };
         return this._super(normalizedPayload);

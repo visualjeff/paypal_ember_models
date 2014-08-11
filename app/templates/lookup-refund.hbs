@@ -1,0 +1,45 @@
+<br>
+<div class="small-8 columns">
+    <div class="panel">
+        <h3>Look up a refund by transactionId</h3>
+        <br><br>
+        <br>
+        <form>
+            <fieldset>
+
+                <div class="input-wrapper">
+                    <label for="transactionId">Transaction ID:</label>
+                    {{view "textfield"
+                    type="text"
+                    viewName="transactionId"
+                    valueBinding="transactionId"
+                    size="10"
+                    }}
+                </div>
+
+                <br>
+                <ul class="button-group right">
+                    <button class='button' {{action 'lookupRefund' this}}>Lookup</button>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+
+
+
+    <div class="panel">
+        <h3>Returned JSON</h3>
+        <br><br>
+        <br>
+        <div class="input-wrapper">
+            <label for="results">Results:</label>
+            {{view "textarea"
+            name="results"
+            viewName="results"
+            valueBinding="results"
+            size="30"
+            rows="8"
+            }}
+        </div>
+    </div>
+</div>

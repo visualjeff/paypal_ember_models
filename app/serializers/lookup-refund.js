@@ -11,7 +11,7 @@ export default DS.RESTSerializer.extend({
      * @param payload
      */
     extractMeta: function(store, type, payload) {
-        Ember.Logger.debug('refund extractMeta invoked!');
+        Ember.Logger.debug('lookupRefund extractMeta invoked!');
     },
 
     /**
@@ -21,33 +21,25 @@ export default DS.RESTSerializer.extend({
      * @returns {*}
      */
     serialize: function(record, options) {
-        Ember.Logger.debug('refund serialize invoked!');
-
-        var serializedRecord = {
-            amount: {
-                transactionId: record.get('transactionId'),
-                total: record.get('total'),
-                currency: record.get('currency')
-            }
-        };
-
-        Ember.Logger.debug('  serializedRecord = ' + JSON.stringify(serializedRecord));
-        return serializedRecord;
+        Ember.Logger.debug('lookupSale serialize invoked!');
+        Ember.Logger.debug('  record = ' + JSON.stringify(record));
+        return record;
     },
 
     normalizePayload: function(payload) {
-        Ember.Logger.debug('refund normalizePayload invoked!');
+        Ember.Logger.debug('lookupRefund normalizePayload invoked!');
         Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
 
         var normalizedPayload = {
-            refund: {
+            lookupRefund: {
                 id: payload.id,
                 createTime: payload.create_time,
                 updateTime: payload.update_time,
                 status: payload.state,
                 total: payload.amount.total,
                 currency: payload.amount.currency,
-                saleId: payload.sale_id
+                captureId: payload.capture_id,
+                parentPayment: payload.parent_payment
             }
         };
 

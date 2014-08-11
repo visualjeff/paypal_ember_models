@@ -26,32 +26,18 @@ export default DS.RESTSerializer.extend({
         return record;
     },
 
-    /**
-     * Override if you need a root
-     * @param store
-     * @param type
-     * @param payload
-     * @returns {*}
-     */
-    extractSingle: function(store, type, payload) {
-        Ember.Logger.debug('sale extracSingle invoked!');
-        payload = { "sale": payload };
-        return this._super(store, type, payload);
-    },
-
-
     normalizePayload: function(payload) {
         Ember.Logger.debug('sale normalizePayload invoked!');
         Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
 
         var normalizedPayload = {
             sale: {
-                id: payload.sale.id,
-                createTime: payload.sale.create_time,
-                updateTime: payload.sale.update_time,
-                status: payload.sale.state,
-                total: payload.sale.amount.total,
-                currency: payload.sale.amount.currency
+                id: payload.id,
+                createTime: payload.create_time,
+                updateTime: payload.update_time,
+                status: payload.state,
+                total: payload.amount.total,
+                currency: payload.amount.currency
             }
         };
         return this._super(normalizedPayload);
