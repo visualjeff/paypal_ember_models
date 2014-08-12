@@ -3,14 +3,6 @@ import Ember from 'ember';
 import ApplicationAdapter from 'paypal/adapters/application';
 
 export default ApplicationAdapter.extend({
-    host: 'https://api.sandbox.paypal.com',
-    namespace: 'v1/payments',
-
-    headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer A015XZFYzM67G4p3xns6YNpTzMBrrEowH9bAnqQ9fVieXkg"
-    },
-
     /**
      * Build the url.  Good place to log out what is using in url creation.
      * @param type
@@ -18,13 +10,9 @@ export default ApplicationAdapter.extend({
      * @returns {*}
      */
     buildURL: function(type, id) {
-        Ember.Logger.debug('refund adapter information:');
-        Ember.Logger.debug('  type: ' + type);
-        Ember.Logger.debug('  id: ' + id);
-
-        var url = this.host + "/" + this.namespace + "/sale/" + id + "/refund";
-        Ember.Logger.debug('  refund adapter, url = ' + url);
-
+        Ember.Logger.debug('Authorization adapter information:');
+        var url = this._super(type, id);
+        Ember.Logger.debug('  Authorization adapter, url = ' + url);
         return url;
     },
     /**
@@ -49,15 +37,11 @@ export default ApplicationAdapter.extend({
      * @returns {*}
      */
     createRecord: function(store, type, record) {
-        Ember.Logger.debug('refund adapter createRecord information:');
-        Ember.Logger.debug('  type = ' + type);
-        Ember.Logger.debug('  record = ' + JSON.stringify(record));
         var data = {};
         var serializer = store.serializerFor(type.typeKey);
         serializer.serializeIntoHash(data, type, record, { includeId: true });
-        data = data.refund; //Customization here.  Only send the sale data.  Not the wrapped sale.
-        var transactionId = data.amount.transactionId;
-        delete data.amount.transactionId;
-        return this.ajax(this.buildURL(type.typeKey, transactionId), "POST", { data: data });
+        data = data.authorization; //Customization here.  Only send the payment.  Not the wrapped payment.
+        //return this.ajax(this.buildURL(type.typeKey), "POST", { data: data });
+        return this.ajax(this.buildURL('payment'), "POST", { data: data });
     }
 });

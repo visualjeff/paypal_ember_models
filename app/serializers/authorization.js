@@ -2,11 +2,6 @@ import DS from 'ember-data';
 import Ember from 'ember';
 import ApplicationSerializer from 'paypal/serializers/application';
 
-/**
- * Top level serializer for paypal payment
- *
- * NOTE: .decamelize() was added to the keys.  Paypal doesn't accept camelized keys.
- */
 export default ApplicationSerializer.extend({
     /**
      * To tweak the data your sending to the paypal.
@@ -60,9 +55,10 @@ export default ApplicationSerializer.extend({
     },
 
     normalizePayload: function(payload) {
-        Ember.Logger.debug('payment normalizePayload invoked!');
+        Ember.Logger.debug('authorization normalizePayload invoked!');
+        //Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
         var normalizedPayload = {
-            payment: {
+            authorization: {
                 id: payload.id,
                 createTime: payload.create_time,
                 updateTime: payload.update_time,
@@ -80,15 +76,17 @@ export default ApplicationSerializer.extend({
                 state: payload.payer.funding_instruments[0].credit_card.billing_address.state,
                 postalCode: payload.payer.funding_instruments[0].credit_card.billing_address.postal_code,
                 countryCode: payload.payer.funding_instruments[0].credit_card.billing_address.country_code,
+
                 total: payload.transactions[0].amount.total,
                 currency: payload.transactions[0].amount.currency,
                 subtotal: payload.transactions[0].amount.details.subtotal,
                 tax: payload.transactions[0].amount.details.tax,
                 shipping: payload.transactions[0].amount.details.shipping,
                 description: payload.transactions[0].description,
-                transactionId: payload.transactions[0].related_resources[0].sale.id
+                authorizationId: payload.transactions[0].related_resources[0].authorization.id
             }
         };
+        //Ember.Logger.debug('  normalizedPayload = ' + JSON.stringify(normalizedPayload));
         return this._super(normalizedPayload);
     }
 });

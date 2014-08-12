@@ -6,6 +6,6 @@ export default DS.RESTAdapter.extend({
 
     headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer A015iH7XWumL0PYisus4ULYTfXDsbmfL3LgfQ9pKYz9K2UU"
+        "Authorization": "Bearer A015XZFYzM67G4p3xns6YNpTzMBrrEowH9bAnqQ9fVieXkg"
     }
 });

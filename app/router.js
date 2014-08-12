@@ -20,6 +20,7 @@ Router.map(function() {
 
   this.route('lookupSale');
   this.route('lookupRefund');
+  this.route('authorization');
 });
 
 export default Router;

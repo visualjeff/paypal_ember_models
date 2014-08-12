@@ -1,0 +1,231 @@
+<br>
+<div class="small-8 columns">
+<div class="panel">
+<h3>Click Submit Authorization to exercise paypal's sandbox.</h3>
+<br><br>
+<form>
+<fieldset>
+<div class="input-wrapper">
+    <label for="intent">Intent:</label>
+    {{view "textfield"
+    type="text"
+    viewName="intent"
+    valueBinding="intent"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="paymentMethod">Payment method:</label>
+    {{view "textfield"
+    type="text"
+    viewName="paymentMethod"
+    valueBinding="paymentMethod"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="number">number:</label>
+    {{view "textfield"
+    type="text"
+    viewName="number"
+    valueBinding="number"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="type">type:</label>
+    {{view "textfield"
+    type="text"
+    viewName="type"
+    valueBinding="type"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="expireMonth">Expire month:</label>
+    {{view "textfield"
+    type="text"
+    viewName="expireMonth"
+    valueBinding="expireMonth"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="expireYear">Expire year:</label>
+    {{view "textfield"
+    type="text"
+    viewName="expireYear"
+    valueBinding="expireYear"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="cvv2">cvv2:</label>
+    {{view "textfield"
+    type="text"
+    viewName="cvv2"
+    valueBinding="cvv2"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="first_name">First name:</label>
+    {{view "textfield"
+    type="text"
+    viewName="firstName"
+    valueBinding="firstName"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="lastName">Last name:</label>
+    {{view "textfield"
+    type="text"
+    viewName="lastName"
+    valueBinding="lastName"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="address">Address:</label>
+    {{view "textfield"
+    type="text"
+    viewName="address"
+    valueBinding="address"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="city">City:</label>
+    {{view "textfield"
+    type="text"
+    viewName="city"
+    valueBinding="city"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="state">State:</label>
+    {{view "textfield"
+    type="text"
+    viewName="state"
+    valueBinding="state"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="postalCode">Postal code:</label>
+    {{view "textfield"
+    type="text"
+    viewName="postalCode"
+    valueBinding="postalCode"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="country_code">Country_code:</label>
+    {{view "textfield"
+    type="text"
+    viewName="countryCode"
+    valueBinding="countryCode"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="total">Total:</label>
+    {{view "textfield"
+    type="text"
+    viewName="total"
+    valueBinding="total"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="currency">Currency:</label>
+    {{view "textfield"
+    type="text"
+    viewName="currency"
+    valueBinding="currency"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="subtotal">Subtotal:</label>
+    {{view "textfield"
+    type="text"
+    viewName="subtotal"
+    valueBinding="subtotal"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="tax">Tax:</label>
+    {{view "textfield"
+    type="text"
+    viewName="tax"
+    valueBinding="tax"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="shipping">Shipping:</label>
+    {{view "textfield"
+    type="text"
+    viewName="shipping"
+    valueBinding="shipping"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="description">Description:</label>
+    {{view "textfield"
+    type="text"
+    viewName="description"
+    valueBinding="description"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<br>
+<ul class="button-group right">
+    <button class='button' {{action 'authorize' this}}>Submit Authorization</button>
+</ul>
+</fieldset>
+</form>
+</div>
+
+<div class="panel">
+    <h3>Returned JSON</h3>
+    <br><br>
+    <br>
+    <div class="input-wrapper">
+        <label for="results">Results:</label>
+        {{view "textarea"
+        name="results"
+        viewName="results"
+        valueBinding="results"
+        size="30"
+        rows="8"
+        }}
+    </div>
+</div>
+</div>

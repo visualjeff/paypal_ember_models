@@ -1,19 +1,8 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import ApplicationSerializer from 'paypal/serializers/application';
 
-export default DS.RESTSerializer.extend({
-    primaryKey: 'id',
-
-    /**
-     * Remove any Meta if its necessary.
-     * @param store
-     * @param type
-     * @param payload
-     */
-    extractMeta: function(store, type, payload) {
-        Ember.Logger.debug('refund extractMeta invoked!');
-    },
-
+export default ApplicationSerializer.extend({
     /**
      * To tweak the data your sending to the paypal.
      * @param record
@@ -37,7 +26,7 @@ export default DS.RESTSerializer.extend({
 
     normalizePayload: function(payload) {
         Ember.Logger.debug('refund normalizePayload invoked!');
-        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
+        //Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
 
         var normalizedPayload = {
             refund: {
