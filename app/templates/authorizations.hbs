@@ -1,0 +1,30 @@
+<br>
+<fieldset>
+    <legend>Authorized payments</legend>
+    <table>
+        <thead>
+        <tr>
+            <th width="150">Autorization Id</th>
+            <th width="150">Create Time</th>
+            <th width="150">Total</th>
+            <th width="150">State</th>
+            <th width="150"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each}}
+            <tr>
+                <td>{{authorizationId}}</td>
+                <td>{{createTime}}</td>
+                <td>${{total}}</td>
+                <td>{{status}}</td>
+                <td>
+                    <ul class="button-group">
+                        <button class='button' {{action 'capture' this}}>Capture sale</button>
+                    </ul>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</fieldset>

@@ -8,7 +8,7 @@ export default ApplicationAdapter.extend({
 
     headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer A015XZFYzM67G4p3xns6YNpTzMBrrEowH9bAnqQ9fVieXkg"
+        "Authorization": "Bearer A015KFHGw-etj7DCuIU0RPfxkRlRCQWAfzSLqMVLQr0Gfqo"
     },
 
     /**

@@ -50,13 +50,13 @@ export default ApplicationSerializer.extend({
                     "description": record.get('description')
                 }
             ]
-        }
+        };
         return serializedPayload;
     },
 
     normalizePayload: function(payload) {
         Ember.Logger.debug('authorization normalizePayload invoked!');
-        //Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
+        Ember.Logger.debug('  payload = ' + JSON.stringify(payload));
         var normalizedPayload = {
             authorization: {
                 id: payload.id,

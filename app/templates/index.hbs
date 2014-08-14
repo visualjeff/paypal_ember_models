@@ -6,20 +6,16 @@
 <div class="panel">
     <h4>Setup requirements!</h4>
     <p>
-        Update this project with your access token before attempting to run it.  The files that needs to be updated with your token are:  <i>adapters/application.js</i>
+        Update this project with your access token before attempting to run it.  The files that needs to be updated with your token are:  <i>adapters/application.js</i>.  (i.e., "Authorization": "Bearer ACCESS_TOKEN_GOES_HERE")
         <br><br>
-        To get a token use this curl command:
+        To receive an access token from Paypal use this curl command:
         <br>
         <div class="panel">
         <i>curl -v https://api.sandbox.paypal.com/v1/oauth2/token -H "Accept: application/json" -H "Accept-Language: en_US" -u "APP_ID:SECRET" -d "grant_type=client_credentials"</i>
         </div>
-        <br>
-        Look for "access_token" in the JSON that Paypal returns.  Update the header in each adapters with this token.  i.e., "Authorization": "Bearer TOKEN_GOES_HERE"
     </p>
 </div>
 
-
-<br>
 <br>
 <h4>{{#link-to 'paypal'}}Paypal{{/link-to}}</h4>
 </div>

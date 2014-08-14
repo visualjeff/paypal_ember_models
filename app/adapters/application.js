@@ -6,6 +6,13 @@ export default DS.RESTAdapter.extend({
 
     headers: {
         "Content-Type": "application/json",
-        "Authorization": "Bearer A015XZFYzM67G4p3xns6YNpTzMBrrEowH9bAnqQ9fVieXkg"
-    }
+        "Authorization": "Bearer A015KFHGw-etj7DCuIU0RPfxkRlRCQWAfzSLqMVLQr0Gfqo"
+    },
+
+    pathForType: function(type) {
+        //I've commented out the pluralization below.
+        //var decamelized = Ember.String.decamelize(type);
+        //return Ember.String.pluralize(decamelized);
+        return type;
+    },
 });

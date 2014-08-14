@@ -1,5 +1,4 @@
 import DS from 'ember-data';
-import PaymentModel from 'paypal/models/payment';
 
 export default DS.Model.extend({
     createTime: DS.attr('string'),

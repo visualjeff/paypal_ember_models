@@ -10,9 +10,9 @@ export default ApplicationAdapter.extend({
      * @returns {*}
      */
     buildURL: function(type, id) {
-        Ember.Logger.debug('Authorization adapter information:');
-        var url = this._super(type, id);
-        Ember.Logger.debug('  Authorization adapter, url = ' + url);
+        Ember.Logger.debug('Capture adapter information:');
+        var url = this.host + "/" + this.namespace + "/authorization/" + id + "/" + type;
+        Ember.Logger.debug('  Capture adapter, url = ' + url);
         return url;
     },
 
@@ -25,11 +25,11 @@ export default ApplicationAdapter.extend({
      * @returns {*}
      */
     createRecord: function(store, type, record) {
+        var authorizationId = record.get('authorizationId');
         var data = {};
         var serializer = store.serializerFor(type.typeKey);
         serializer.serializeIntoHash(data, type, record, { includeId: true });
-        data = data.authorization; //Customization here.  Only send the payment.  Not the wrapped payment.
-        //return this.ajax(this.buildURL(type.typeKey), "POST", { data: data });
-        return this.ajax(this.buildURL('payment'), "POST", { data: data });
+        data = data.capture; //Customization here.  Only send the payment.  Not the wrapped payment.
+        return this.ajax(this.buildURL(type.typeKey, authorizationId), "POST", { data: data });
     }
 });
