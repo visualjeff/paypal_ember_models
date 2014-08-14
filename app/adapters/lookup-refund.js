@@ -16,12 +16,6 @@ export default ApplicationAdapter.extend({
         Ember.Logger.debug('  lookupRefund adapter, url = ' + url);
         return url;
     },
-    pathForType: function(type) {
-        //I've commented out the pluralization below.
-        //var decamelized = Ember.String.decamelize(type);
-        //return Ember.String.pluralize(decamelized);
-        return type;
-    },
     find: function(store, type, id) {
         Ember.Logger.debug('lookupRefund adapter find information:');
         return this.ajax(this.buildURL('refund', id), 'GET');

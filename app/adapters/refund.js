@@ -28,19 +28,6 @@ export default ApplicationAdapter.extend({
         return url;
     },
     /**
-     * Override to customize the type for the url.  Ember pluralizes by default.  Paypal doesn't want the pluralization
-     * here is where we change that.
-     *
-     * @param type
-     * @returns {*}
-     */
-    pathForType: function(type) {
-        //I've commented out the pluralization below.
-        //var decamelized = Ember.String.decamelize(type);
-        //return Ember.String.pluralize(decamelized);
-        return type;
-    },
-    /**
      * Override createRecord.  Paypal doesn't want the payload wrapped in
      * the type key 'payment'.
      * @param store
