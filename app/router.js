@@ -22,6 +22,7 @@ Router.map(function() {
   this.route('lookupRefund');
   this.route('authorization');
   this.route('authorizations');
+  this.route('item');
 });
 
 export default Router;

@@ -1,21 +1,19 @@
 <div class="small-8 columns">
 <br>
-    <h3>Welcome to my Ember-Data / Paypal example:</h3>
-<br>
+    <h3>Welcome to a Ember-Data / Paypal example:</h3>
 <br>
 <div class="panel">
     <h4>Setup requirements!</h4>
     <p>
-        Update this project with your access token before attempting to run it.  The files that needs to be updated with your token are:  <i>adapters/application.js</i>.  (i.e., "Authorization": "Bearer ACCESS_TOKEN_GOES_HERE")
+        Update with your access token: <i>adapters/application.js</i>.  (i.e., "Authorization": "Bearer ACCESS_TOKEN_GOES_HERE")
         <br><br>
         To receive an access token from Paypal use this curl command:
         <br>
         <div class="panel">
-        <i>curl -v https://api.sandbox.paypal.com/v1/oauth2/token -H "Accept: application/json" -H "Accept-Language: en_US" -u "APP_ID:SECRET" -d "grant_type=client_credentials"</i>
+        <i>curl -v https://api.sandbox.paypal.com/v1/oauth2/token -H "Accept: application/json" -H "Accept-Language: en_US" -u "<b>APP_ID:SECRET</b>" -d "grant_type=client_credentials"</i>
         </div>
     </p>
 </div>
-
 <br>
-<h4>{{#link-to 'paypal'}}Paypal{{/link-to}}</h4>
+<h4>{{#link-to 'paypal'}}==> Start Here <=={{/link-to}}</h4>
 </div>

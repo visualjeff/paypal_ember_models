@@ -19,9 +19,14 @@
                 <td>${{total}}</td>
                 <td>{{status}}</td>
                 <td>
+                    {{#if displayButtons}}
                     <ul class="button-group">
-                        <button class='button' {{action 'capture' this}}>Capture sale</button>
+                        <button class='button tiny' {{action 'voidAuthorization' this}}>Void Authorization</button>
                     </ul>
+                    <ul class="button-group">
+                        <button class='button tiny' {{action 'capture' this}}>Capture sale</button>
+                    </ul>
+                    {{/if}}
                 </td>
             </tr>
         {{/each}}
