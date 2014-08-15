@@ -17,9 +17,6 @@ export default DS.RESTAdapter.extend({
      * @returns {*}
      */
     pathForType: function(type) {
-        //I've commented out the pluralization below.
-        //var decamelized = Ember.String.decamelize(type);
-        //return Ember.String.pluralize(decamelized);
         return type;
-    },
+    }
 });

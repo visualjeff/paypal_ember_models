@@ -26,7 +26,8 @@ export default ApplicationSerializer.extend({
                 updateTime: payload.update_time,
                 status: payload.state,
                 total: payload.amount.total,
-                currency: payload.amount.currency
+                currency: payload.amount.currency,
+                parentPayment: payload.parent_payment
             }
         };
         return this._super(normalizedPayload);

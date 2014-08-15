@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
     results: "",
-
     actions: {
         authorize: function (model) {
             var self = this;

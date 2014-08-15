@@ -8,9 +8,11 @@ export default Ember.ObjectController.extend({
             var onSuccess = function (model) {
                 Ember.Logger.debug("Success!");
                 self.set('results', JSON.stringify(model));
-                //after success force an update for the original sale.
+                //after success force an update for the original sale and local record of payment.
                 self.store.find('sale', model.get('saleId')).then(function(model){
                   model.reload();
+                  var payment = self.store.getById('payment', model.get('parentPayment'));
+                  payment.set('status', 'refunded');
                 });
                 //self.transitionToRoute('index');
             };

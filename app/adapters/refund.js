@@ -3,14 +3,6 @@ import Ember from 'ember';
 import ApplicationAdapter from 'paypal/adapters/application';
 
 export default ApplicationAdapter.extend({
-    host: 'https://api.sandbox.paypal.com',
-    namespace: 'v1/payments',
-
-    headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer A015w6gkTGvFHXwlImC2IptTB1cyF2i.AfBCrmYky5237c4"
-    },
-
     /**
      * Build the url.  Good place to log out what is using in url creation.
      * @param type
@@ -19,12 +11,10 @@ export default ApplicationAdapter.extend({
      */
     buildURL: function(type, id) {
         Ember.Logger.debug('refund adapter information:');
-        Ember.Logger.debug('  type: ' + type);
-        Ember.Logger.debug('  id: ' + id);
-
+        //Ember.Logger.debug('  type: ' + type);
+        //Ember.Logger.debug('  id: ' + id);
         var url = this.host + "/" + this.namespace + "/sale/" + id + "/refund";
         Ember.Logger.debug('  refund adapter, url = ' + url);
-
         return url;
     },
     /**
@@ -37,8 +27,8 @@ export default ApplicationAdapter.extend({
      */
     createRecord: function(store, type, record) {
         Ember.Logger.debug('refund adapter createRecord information:');
-        Ember.Logger.debug('  type = ' + type);
-        Ember.Logger.debug('  record = ' + JSON.stringify(record));
+        //Ember.Logger.debug('  type = ' + type);
+        //Ember.Logger.debug('  record = ' + JSON.stringify(record));
         var data = {};
         var serializer = store.serializerFor(type.typeKey);
         serializer.serializeIntoHash(data, type, record, { includeId: true });

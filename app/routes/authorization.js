@@ -24,6 +24,15 @@ export default Ember.Route.extend({
             "shipping": "0.03",
             "description": "This is the payment transaction description."
         });
+    },
+    /**
+     * Added to reset results fields when the form is reloaded.
+     * @param controller
+     * @param model
+     */
+    setupController: function(controller, model) {
+        controller.set('results', '');
+        this._super(controller, model);
     }
 });
 

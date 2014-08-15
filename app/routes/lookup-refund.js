@@ -5,5 +5,14 @@ export default Ember.Route.extend({
         return Ember.Object.create({
             "transactionId": ""
         });
+    },
+    /**
+     * Added to reset results fields when the form is reloaded.
+     * @param controller
+     * @param model
+     */
+    setupController: function(controller, model) {
+        controller.set('results', '');
+        this._super(controller, model);
     }
 });
