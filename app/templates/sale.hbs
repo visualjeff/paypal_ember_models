@@ -64,14 +64,17 @@
             }}
         </div>
         <br>
+
+        {{#if canRefund}}
         <ul class="button-group right">
             <button class='button' {{action 'refund' this}}>Request Refund</button>
         </ul>
+        {{/if}}
             </fieldset>
         </form>
 </div>
 
-
+{{#if canRefund}}
 <div class="panel">
     <h3>Returned JSON</h3>
     <br><br>
@@ -88,3 +91,4 @@
     </div>
 </div>
 </div>
+{{/if}}

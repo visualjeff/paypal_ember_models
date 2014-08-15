@@ -2,6 +2,12 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
     results: "",
+    canRefund: function() {
+        if (this.get('status') === 'approved') {
+            return true;
+        };
+        return false;
+    }.property('status'),
     actions: {
         refund: function (model) {
             var self = this;

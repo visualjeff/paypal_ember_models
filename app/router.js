@@ -23,6 +23,7 @@ Router.map(function() {
   this.route('authorization');
   this.route('authorizations');
   this.route('item');
+  this.route('saleitem');
 });
 
 export default Router;
