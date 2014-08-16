@@ -1,4 +1,3 @@
-import DS from 'ember-data';
 import Ember from 'ember';
 import ApplicationSerializer from 'paypal/serializers/application';
 
@@ -9,7 +8,7 @@ export default ApplicationSerializer.extend({
      * @param options
      * @returns {*}
      */
-    serialize: function(record, options) {
+    serialize: function(record) {
         Ember.Logger.debug('sale serialize invoked!');
         //Ember.Logger.debug('  record = ' + JSON.stringify(record));
         return record;

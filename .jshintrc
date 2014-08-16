@@ -2,7 +2,8 @@
   "predef": {
     "document": true,
     "window": true,
-    "PaypalENV": true
+    "PaypalENV": true,
+    "$": true
   },
   "browser" : true,
   "boss" : true,

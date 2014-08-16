@@ -1,4 +1,3 @@
-import DS from 'ember-data';
 import Ember from 'ember';
 import ApplicationSerializer from 'paypal/serializers/application';
 
@@ -14,7 +13,7 @@ export default ApplicationSerializer.extend({
      * @param options
      * @returns {*}
      */
-    serialize: function(record, options) {
+    serialize: function(record) {
         Ember.Logger.debug('payment serialize invoked!');
         var serializedPayload = {
             "intent": record.get('intent'),
@@ -55,7 +54,7 @@ export default ApplicationSerializer.extend({
                     "description": record.get('description')
                 }
             ]
-        }
+        };
         return serializedPayload;
     },
 

@@ -1,4 +1,3 @@
-import DS from 'ember-data';
 import Ember from 'ember';
 import ApplicationAdapter from 'paypal/adapters/application';
 

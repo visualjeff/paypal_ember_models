@@ -5,7 +5,7 @@ export default Ember.ObjectController.extend({
     canRefund: function() {
         if (this.get('status') === 'completed') {
             return true;
-        };
+        }
         return false;
     }.property('status'),
     actions: {
