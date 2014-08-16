@@ -16,7 +16,7 @@ export default ApplicationSerializer.extend({
                 "currency": record.get('currency'),
                 "total": record.get('total')
             },
-            "is_final_capture": record.get('is_final_capture')
+            "is_final_capture": record.get('isFinalCapture')
         };
         return serializedPayload;
     },
@@ -32,8 +32,8 @@ export default ApplicationSerializer.extend({
                 status: payload.state,
                 total: payload.amount.total,
                 currency: payload.amount.currency,
-                is_final_capture: payload.is_final_capture,
-                parent_payment: payload.parent_payment
+                isFinalCapture: payload.is_final_capture,
+                parentPayment: payload.parent_payment
             }
         };
         //Ember.Logger.debug('  normalizedPayload = ' + JSON.stringify(normalizedPayload));

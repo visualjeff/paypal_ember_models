@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
     results: "",
     canRefund: function() {
-        if (this.get('status') === 'approved') {
+        if (this.get('status') === 'completed') {
             return true;
         };
         return false;

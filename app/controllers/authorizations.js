@@ -38,7 +38,7 @@ export default Ember.ArrayController.extend({
                 "authorizationId": model.get('authorizationId'),
                 "total": model.get('total'),
                 "currency": model.get('currency'),
-                "is_final_capture": true
+                "isFinalCapture": true
             });
             voidAuthorization.save().then(onSuccess, onFail);
         },
@@ -74,7 +74,7 @@ export default Ember.ArrayController.extend({
                 "authorizationId": model.get('authorizationId'),
                 "total": model.get('total'),
                 "currency": model.get('currency'),
-                "is_final_capture": true
+                "isFinalCapture": true
             });
             capture.save().then(onSuccess, onFail);
         }

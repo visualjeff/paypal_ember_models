@@ -28,7 +28,7 @@ export default ApplicationSerializer.extend({
                 total: payload.amount.total,
                 currency: payload.amount.currency,
                 subtotal: payload.amount.details.subtotal,
-                parent_payment: payload.parent_payment
+                parentPayment: payload.parent_payment
             }
         };
         //Ember.Logger.debug('  normalizedPayload = ' + JSON.stringify(normalizedPayload));

@@ -7,6 +7,6 @@ export default DS.Model.extend({
     status: DS.attr('string'),
     total: DS.attr('string'),
     currency: DS.attr('string'),
-    is_final_capture: DS.attr('boolean'),
-    parent_payment: DS.attr('string')
+    isFinalCapture: DS.attr('boolean'),
+    parentPayment: DS.attr('string')
 });

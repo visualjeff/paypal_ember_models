@@ -6,5 +6,5 @@ export default DS.Model.extend({
     status: DS.attr('string'),
     total: DS.attr('string'),
     currency: DS.attr('string'),
-    parent_payment:  DS.attr('string')
+    parentPayment:  DS.attr('string')
 });
