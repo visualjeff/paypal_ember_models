@@ -1,0 +1,32 @@
+<br>
+<fieldset>
+    <legend>Orders</legend>
+    <table>
+        <thead>
+        <tr>
+            <th width="150">Order Id</th>
+            <th width="150">Create Time</th>
+            <th width="150">Total</th>
+            <th width="150">State</th>
+            <th width="150"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{createTime}}</td>
+                <td>${{total}}</td>
+                <td>{{status}}</td>
+                <td>
+                    {{#if displayButtonsForOrders}}
+                        <ul class="button-group">
+                            <button class='button tiny' {{action 'executeOrder' this}}>Execute Order</button>
+                        </ul>
+                    {{/if}}
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</fieldset>

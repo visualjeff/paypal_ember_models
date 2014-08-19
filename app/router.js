@@ -24,6 +24,8 @@ Router.map(function() {
   this.route('authorizations');
   //this.route('item');
   this.route('order');
+  this.route('orders');
+  this.route('creditCard');
 });
 
 export default Router;

@@ -6,5 +6,12 @@ export default Ember.ObjectController.extend({
             return true;
         }
         return false;
+    }.property('status'),
+
+    displayButtonsForOrders: function() {
+        if (this.get('status') === 'created') {
+            return true;
+        }
+        return false;
     }.property('status')
 });

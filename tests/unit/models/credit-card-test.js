@@ -2,7 +2,7 @@ import { test, moduleForModel } from 'ember-qunit';
 
 moduleForModel('credit-card', 'CreditCard', {
   // Specify the other units that are required for this test.
-  needs: ['model:billing-address']
+  needs: []
 });
 
 test('it exists', function() {

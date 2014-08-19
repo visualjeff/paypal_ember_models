@@ -1,0 +1,101 @@
+<br>
+<div class="small-8 columns">
+    <div class="panel">
+        <h3>Click Save to exercise paypal's sandbox.</h3>
+        <br><br>
+        <form>
+            <fieldset>
+                <div class="input-wrapper">
+                    <label for="payerId">payerId:</label>
+                    {{view "textfield"
+                    type="text"
+                    viewName="payerId"
+                    valueBinding="payerId"
+                    disabled="true"
+                    size="10"
+                    }}
+                </div>
+                <div class="input-wrapper">
+                    <label for="type">type:</label>
+                    {{view "textfield"
+                    type="text"
+                    viewName="type"
+                    valueBinding="type"
+                    disabled="true"
+                    size="10"
+                    }}
+                </div>
+                <div class="input-wrapper">
+                    <label for="number">number:</label>
+                    {{view "textfield"
+                    type="text"
+                    viewName="number"
+                    valueBinding="number"
+                    disabled="true"
+                    size="10"
+                    }}
+                </div>
+                <div class="input-wrapper">
+                    <label for="expireMonth">expireMonth:</label>
+                    {{view "textfield"
+                    type="text"
+                    viewName="expireMonth"
+                    valueBinding="expireMonth"
+                    disabled="true"
+                    size="10"
+                    }}
+                </div>
+                <div class="input-wrapper">
+                    <label for="expireYear">expireYear:</label>
+                    {{view "textfield"
+                    type="text"
+                    viewName="expireYear"
+                    valueBinding="expireYear"
+                    disabled="true"
+                    size="10"
+                    }}
+                </div>
+                <div class="input-wrapper">
+                    <label for="firstName">firstName:</label>
+                    {{view "textfield"
+                    type="text"
+                    viewName="firstName"
+                    valueBinding="firstName"
+                    disabled="true"
+                    size="10"
+                    }}
+                </div>
+                <div class="input-wrapper">
+                    <label for="lastName">lastName:</label>
+                    {{view "textfield"
+                    type="text"
+                    viewName="lastName"
+                    valueBinding="lastName"
+                    disabled="true"
+                    size="10"
+                    }}
+                </div>
+                <br>
+                <ul class="button-group right">
+                    <button class='button' {{action 'saveCard' this}}>Save</button>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+
+    <div class="panel">
+        <h3>Returned JSON</h3>
+        <br><br>
+        <br>
+        <div class="input-wrapper">
+            <label for="results">Results:</label>
+            {{view "textarea"
+            name="results"
+            viewName="results"
+            valueBinding="results"
+            size="30"
+            rows="8"
+            }}
+        </div>
+    </div>
+</div>
