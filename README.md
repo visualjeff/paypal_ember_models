@@ -11,8 +11,7 @@ Ember (ember-cli) models for integrating payment with paypal
 
 ## Running
 
-NOTE: Before running this application you'll need to update the source (app/adapters/application.js) with your token provided by paypal.  
-If you don't already have a paypal developer account its time to apply for one.  https://developer.paypal.com/                                                                                                                 
+NOTE: Before running this application you'll need to update the source (app/adapters/application.js) with your token provided by paypal.  If you don't already have a paypal developer account its time to apply for one.  https://developer.paypal.com/                                                                                                                 
 
 * `ember server`
 * Visit your app at http://localhost:4200.
