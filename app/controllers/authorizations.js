@@ -35,10 +35,10 @@ export default Ember.ArrayController.extend({
                 }
             };
             var voidAuthorization = this.store.createRecord('void', {
-                "authorizationId": model.get('authorizationId'),
-                "total": model.get('total'),
-                "currency": model.get('currency'),
-                "isFinalCapture": true
+                authorizationId: model.get('authorizationId'),
+                total: model.get('total'),
+                currency: model.get('currency'),
+                isFinalCapture: true
             });
             voidAuthorization.save().then(onSuccess, onFail);
         },
@@ -71,10 +71,10 @@ export default Ember.ArrayController.extend({
                 }
             };
             var capture = this.store.createRecord('capture', {
-                "authorizationId": model.get('authorizationId'),
-                "total": model.get('total'),
-                "currency": model.get('currency'),
-                "isFinalCapture": true
+                authorizationId: model.get('authorizationId'),
+                total: model.get('total'),
+                currency: model.get('currency'),
+                isFinalCapture: true
             });
             capture.save().then(onSuccess, onFail);
         }

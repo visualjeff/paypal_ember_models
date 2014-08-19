@@ -29,26 +29,26 @@ export default Ember.ObjectController.extend({
             };
 
             var authorization = this.store.createRecord('authorization', {
-                "intent": model.get('intent'),
-                "paymentMethod": model.get('paymentMethod'),
-                "number": model.get('number'),
-                "type": model.get('type'),
-                "expireMonth": model.get('expireMonth'),
-                "expireYear": model.get('expireYear'),
-                "cvv2": model.get('cvv2'),
-                "firstName": model.get('firstName'),
-                "lastName": model.get('lastName'),
-                "address": model.get('address'),
-                "city": model.get('city'),
-                "state": model.get('state'),
-                "postalCode": model.get('postalCode'),
-                "countryCode": model.get('countryCode'),
-                "total": model.get('total'),
-                "currency": model.get('currency'),
-                "subtotal": model.get('subtotal'),
-                "tax": model.get('tax'),
-                "shipping": model.get('shipping'),
-                "description": model.get('description')
+                intent: model.get('intent'),
+                paymentMethod: model.get('paymentMethod'),
+                number: model.get('number'),
+                type: model.get('type'),
+                expireMonth: model.get('expireMonth'),
+                expireYear: model.get('expireYear'),
+                cvv2: model.get('cvv2'),
+                firstName: model.get('firstName'),
+                lastName: model.get('lastName'),
+                address: model.get('address'),
+                city: model.get('city'),
+                state: model.get('state'),
+                postalCode: model.get('postalCode'),
+                countryCode: model.get('countryCode'),
+                total: model.get('total'),
+                currency: model.get('currency'),
+                subtotal: model.get('subtotal'),
+                tax: model.get('tax'),
+                shipping: model.get('shipping'),
+                description: model.get('description')
             });
             authorization.save().then(onSuccess, onFail);
         }

@@ -1,0 +1,227 @@
+<br>
+<div class="small-8 columns">
+<div class="panel">
+<h3>Click Submit Order to exercise paypal's sandbox.</h3>
+<br><br>
+<form>
+<fieldset>
+<div class="input-wrapper">
+    <label for="intent">Intent:</label>
+    {{view "textfield"
+    type="text"
+    viewName="intent"
+    valueBinding="intent"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="paymentMethod">Payment method:</label>
+    {{view "textfield"
+    type="text"
+    viewName="paymentMethod"
+    valueBinding="paymentMethod"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+        <label for="currency">Currency:</label>
+        {{view "textfield"
+        type="text"
+        viewName="currency"
+        valueBinding="currency"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+<div class="input-wrapper">
+    <label for="total">Total:</label>
+    {{view "textfield"
+    type="text"
+    viewName="total"
+    valueBinding="total"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+        <label for="shipping">Shipping:</label>
+        {{view "textfield"
+        type="text"
+        viewName="shipping"
+        valueBinding="shipping"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+<div class="input-wrapper">
+    <label for="subtotal">Subtotal:</label>
+    {{view "textfield"
+    type="text"
+    viewName="subtotal"
+    valueBinding="subtotal"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+    <label for="tax">Tax:</label>
+    {{view "textfield"
+    type="text"
+    viewName="tax"
+    valueBinding="tax"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+        <label for="email">Email:</label>
+        {{view "textfield"
+        type="text"
+        viewName="email"
+        valueBinding="email"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+<div class="input-wrapper">
+    <label for="description">Description:</label>
+    {{view "textfield"
+    type="text"
+    viewName="description"
+    valueBinding="description"
+    disabled="true"
+    size="10"
+    }}
+</div>
+<div class="input-wrapper">
+        <label for="recipientName">Name:</label>
+        {{view "textfield"
+        type="text"
+        viewName="recipientName"
+        valueBinding="recipientName"
+        disabled="true"
+        size="10"
+        }}
+</div>
+<div class="input-wrapper">
+        <label for="line1">Address:</label>
+        {{view "textfield"
+        type="text"
+        viewName="line1"
+        valueBinding="line1"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+<div class="input-wrapper">
+        <label for="city">City:</label>
+        {{view "textfield"
+        type="text"
+        viewName="city"
+        valueBinding="city"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+<div class="input-wrapper">
+        <label for="state">State:</label>
+        {{view "textfield"
+        type="text"
+        viewName="state"
+        valueBinding="state"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+<div class="input-wrapper">
+        <label for="postalCode">Postal code:</label>
+        {{view "textfield"
+        type="text"
+        viewName="postalCode"
+        valueBinding="postalCode"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+<div class="input-wrapper">
+        <label for="countryCode">Country Code:</label>
+        {{view "textfield"
+        type="text"
+        viewName="countryCode"
+        valueBinding="countryCode"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+
+    {{#each items}}
+    <div class="panel">
+    <div class="input-wrapper">
+        <label for="name">Item Name:</label>
+        {{view "textfield"
+        type="text"
+        viewName="name"
+        valueBinding="name"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+        <div class="input-wrapper">
+            <label for="price">Item Price:</label>
+            {{view "textfield"
+            type="text"
+            viewName="price"
+            valueBinding="price"
+            disabled="true"
+            size="10"
+            }}
+        </div>
+        <div class="input-wrapper">
+            <label for="quantity">Item Quantity:</label>
+            {{view "textfield"
+            type="text"
+            viewName="quantity"
+            valueBinding="quantity"
+            disabled="true"
+            size="10"
+            }}
+        </div>
+    <div class="input-wrapper">
+        <label for="sku">Item SKU:</label>
+        {{view "textfield"
+        type="text"
+        viewName="sku"
+        valueBinding="sku"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+    </div>
+    {{/each}}
+
+<br>
+<ul class="button-group right">
+    <button class='button' {{action 'createOrder' this}}>Submit Order</button>
+</ul>
+</fieldset>
+</form>
+</div>
+
+<div class="panel">
+    <h3>Returned JSON</h3>
+    <br><br>
+    <br>
+    <div class="input-wrapper">
+        <label for="results">Results:</label>
+        {{view "textarea"
+        name="results"
+        viewName="results"
+        valueBinding="results"
+        size="30"
+        rows="8"
+        }}
+    </div>
+</div>
+</div>
