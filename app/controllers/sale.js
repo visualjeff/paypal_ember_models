@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
     results: "",
+    isProcessing: false,
     canRefund: function() {
         if (this.get('status') === 'completed') {
             return true;
@@ -10,6 +11,10 @@ export default Ember.ObjectController.extend({
     }.property('status'),
     actions: {
         refund: function (model) {
+            this.setProperties({
+                isProcessing: true //Set isProcessing true to disable form button
+            });
+
             var self = this;
             var onSuccess = function (model) {
                 Ember.Logger.debug("Success!");
@@ -19,6 +24,9 @@ export default Ember.ObjectController.extend({
                   model.reload();
                   var payment = self.store.getById('payment', model.get('parentPayment'));
                   payment.set('status', 'refunded');
+                  self.setProperties({
+                      isProcessing: false
+                  });
                 });
                 //self.transitionToRoute('index');
             };
@@ -36,6 +44,9 @@ export default Ember.ObjectController.extend({
                     if (nTimes-- > 0) {
                         return retry(callback, nTimes);
                     }
+                    self.setProperties({
+                        isProcessing: false
+                    });
                     throw reason;
                 }
             };

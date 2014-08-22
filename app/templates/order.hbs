@@ -203,7 +203,7 @@
 
 <br>
 <ul class="button-group right">
-    <button class='button' {{action 'createOrder' this}}>Submit Order</button>
+    <button class='button' {{action 'createOrder' this}}  {{bind-attr disabled=isProcessing}}>Submit Order</button>
 </ul>
 </fieldset>
 </form>

@@ -1,0 +1,28 @@
+<br>
+<fieldset>
+    <legend>Credit cards registered with paypal</legend>
+    <table>
+        <thead>
+        <tr>
+            <th width="150">Card Type</th>
+            <th width="150">Card Number</th>
+            <th width="150">Registered Until</th>
+            <th width="150"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each}}
+            <tr>
+                <td>{{#link-to 'card' this}}{{upper-case type}}{{/link-to}}</td>
+                <td>{{#link-to 'card' this}}{{number}}{{/link-to}}</td>
+                <td>{{#link-to 'card' this}}{{formattedValidUntil}}{{/link-to}}</td>
+                <td>
+                    <ul class="button-group">
+                        <button class='button tiny' {{action 'deleteCard' this}}  {{bind-attr disabled=isProcessing}}>Delete</button>
+                    </ul>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</fieldset>

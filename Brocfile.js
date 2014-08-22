@@ -24,5 +24,8 @@ app.import({
     development: 'vendor/foundation/js/foundation.js',
     production:  'vendor/foundation/js/foundation.min.js'
 });
-
+app.import({
+    development: 'vendor/moment/moment.js',
+    production:  'vendor/moment/min/moment.min.js'
+});
 module.exports = app.toTree();

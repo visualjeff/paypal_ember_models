@@ -8,8 +8,8 @@ Router.map(function() {
   this.route('paypal');
   this.route('payment');
   this.route('payments');
-  this.route('sale', {path: '/sale/:id' });
-  this.route('refund', {path: '/refund/:id'});
+  this.route('sale', { path: '/sale/:id' });
+  this.route('refund', { path: '/refund/:id' });
 
   //this.resource('sales', { path: '/sales' }, function() {
   //  this.route('sale', { path: '/sale/:id' });
@@ -22,10 +22,11 @@ Router.map(function() {
   this.route('lookupRefund');
   this.route('authorization');
   this.route('authorizations');
-  //this.route('item');
   this.route('order');
   this.route('orders');
   this.route('creditCard');
+  this.route('creditCards');
+  this.route('card', { path: '/card/:id' });
 });
 
 export default Router;

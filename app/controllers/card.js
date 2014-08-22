@@ -1,10 +1,17 @@
 import Ember from 'ember';
+/* global moment */
+// No import for moment, it's a global called `moment`
 
 export default Ember.ObjectController.extend({
     results: "",
     isProcessing: false,
+    formattedValidUntil: function() {
+        return moment(this.get('validUntil')).format('MMMM Do YYYY');
+    }.property('validUntil'),
+
     actions: {
-        payment: function (model) {
+        /* I could never get paypals update credit card api to work.  Something is wrong with it. */
+        updateCard: function(model) {
             this.setProperties({
                 isProcessing: true //Set isProcessing true to disable form button
             });
@@ -38,7 +45,12 @@ export default Ember.ObjectController.extend({
                     throw reason;
                 }
             };
-            model.save().then(onSuccess, onFail);
+
+            this.store.find('creditCard', model.get('id')).then(function(card) {
+                if (card.get('expireMonth') !== model.get('expireMonth')) { card.set('expireMonth', model.get('expireMonth')); }
+                if (card.get('expireYear') !== model.get('expireYear')) { card.set('expireYear', model.get('expireYear')); }
+                card.save().then(onSuccess, onFail);
+            });
         }
     }
 });

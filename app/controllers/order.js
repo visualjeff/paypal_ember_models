@@ -2,12 +2,20 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
     results: "",
+    isProcessing: false,
     actions: {
         createOrder: function (model) {
+            this.setProperties({
+                isProcessing: true //Set isProcessing true to disable form button
+            });
+
             var self = this;
             var onSuccess = function (model) {
                 Ember.Logger.debug("Success!");
                 self.set('results', JSON.stringify(model));
+                self.setProperties({
+                    isProcessing: false
+                });
                 //self.transitionToRoute('index');
             };
             var onFail = function (model) {
@@ -24,6 +32,9 @@ export default Ember.ObjectController.extend({
                     if (nTimes-- > 0) {
                         return retry(callback, nTimes);
                     }
+                    self.setProperties({
+                        isProcessing: false
+                    });
                     throw reason;
                 }
             };

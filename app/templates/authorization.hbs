@@ -207,7 +207,7 @@
 </div>
 <br>
 <ul class="button-group right">
-    <button class='button' {{action 'authorize' this}}>Submit Authorization</button>
+    <button class='button' {{action 'authorize' this}} {{bind-attr disabled=isProcessing}}>Submit Authorization</button>
 </ul>
 </fieldset>
 </form>
@@ -216,7 +216,6 @@
 <div class="panel">
     <h3>Returned JSON</h3>
     <br><br>
-    <br>
     <div class="input-wrapper">
         <label for="results">Results:</label>
         {{view "textarea"

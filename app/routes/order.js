@@ -37,5 +37,9 @@ export default Ember.Route.extend({
             ]
         });
         return order;
+    },
+    setupController: function(controller, model) {
+        if (controller.get('results') !== '') { controller.set('results', ''); }
+        this._super(controller, model);
     }
 });

@@ -19,11 +19,7 @@
                 <td>${{total}}</td>
                 <td>{{status}}</td>
                 <td>
-                    {{#if displayButtonsForOrders}}
-                        <ul class="button-group">
-                            <button class='button tiny' {{action 'executeOrder' this}}>Execute Order</button>
-                        </ul>
-                    {{/if}}
+                    <a target="_blank" {{bind-attr href="approvalUrl"}}>Approve Order</a>
                 </td>
             </tr>
         {{/each}}

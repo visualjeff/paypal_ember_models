@@ -3,7 +3,6 @@
     <div class="panel">
         <h3>Look up a sale by transactionId</h3>
         <br><br>
-        <br>
         <form>
             <fieldset>
 
@@ -19,7 +18,7 @@
 
                 <br>
                 <ul class="button-group right">
-                    <button class='button' {{action 'lookupSale' this}}>Lookup</button>
+                    <button class='button' {{action 'lookupSale' this}}  {{bind-attr disabled=isProcessing}}>Lookup</button>
                 </ul>
             </fieldset>
         </form>
@@ -30,7 +29,6 @@
     <div class="panel">
         <h3>Returned JSON</h3>
         <br><br>
-        <br>
         <div class="input-wrapper">
             <label for="results">Results:</label>
             {{view "textarea"

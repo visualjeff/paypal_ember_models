@@ -2,11 +2,13 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
     itemController: 'item',
-
-    //isCurrentRouteSignup: Ember.computed.equal('currentRouteName', 'signup'),
-
+    isProcessing: false,
     actions: {
         voidAuthorization: function(model) {
+            this.setProperties({
+                isProcessing: true //Set isProcessing true to disable form button
+            });
+
             var self = this;
             var aid = model.get('id');
             var onSuccess = function (model) {
@@ -16,6 +18,9 @@ export default Ember.ArrayController.extend({
                 //after success update authorization status.
                 var authorization = self.store.getById('authorization', aid);
                 authorization.set('status', model.get('status'));
+                self.setProperties({
+                    isProcessing: false
+                });
                 //self.transitionToRoute('index');
             };
             var onFail = function (model) {
@@ -31,6 +36,9 @@ export default Ember.ArrayController.extend({
                     if (nTimes-- > 0) {
                         return retry(callback, nTimes);
                     }
+                    self.setProperties({
+                        isProcessing: false
+                    });
                     throw reason;
                 }
             };
@@ -43,6 +51,10 @@ export default Ember.ArrayController.extend({
             voidAuthorization.save().then(onSuccess, onFail);
         },
         capture: function (model) {
+            this.setProperties({
+                isProcessing: true //Set isProcessing true to disable form button
+            });
+
             var self = this;
             var aid = model.get('id');
             var onSuccess = function (model) {
@@ -52,6 +64,9 @@ export default Ember.ArrayController.extend({
                 //after success update authorization status.
                 var authorization = self.store.getById('authorization', aid);
                 authorization.set('status', model.get('status'));
+                self.setProperties({
+                    isProcessing: false
+                });
                 //self.transitionToRoute('index');
             };
             var onFail = function (model) {
@@ -67,6 +82,9 @@ export default Ember.ArrayController.extend({
                     if (nTimes-- > 0) {
                         return retry(callback, nTimes);
                     }
+                    self.setProperties({
+                        isProcessing: false
+                    });
                     throw reason;
                 }
             };

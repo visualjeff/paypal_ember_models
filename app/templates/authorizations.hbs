@@ -21,10 +21,10 @@
                 <td>
                     {{#if displayButtons}}
                     <ul class="button-group">
-                        <button class='button tiny' {{action 'voidAuthorization' this}}>Void Authorization</button>
+                        <button class='button tiny' {{action 'voidAuthorization' this}} {{bind-attr disabled=isProcessing}}>Void Authorization</button>
                     </ul>
                     <ul class="button-group">
-                        <button class='button tiny' {{action 'capture' this}}>Capture sale</button>
+                        <button class='button tiny' {{action 'capture' this}} {{bind-attr disabled=isProcessing}}>Capture sale</button>
                     </ul>
                     {{/if}}
                 </td>

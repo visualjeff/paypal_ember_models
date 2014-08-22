@@ -10,7 +10,7 @@ export default Ember.Route.extend({
      * @param model
      */
     setupController: function(controller, model) {
-        controller.set('results', '');
+        if (controller.get('results') !== '') { controller.set('results', ''); }
         this._super(controller, model);
     }
 });

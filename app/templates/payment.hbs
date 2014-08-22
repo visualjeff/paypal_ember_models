@@ -207,7 +207,7 @@
     </div>
     <br>
     <ul class="button-group right">
-        <button class='button' {{action 'payment' this}}>Submit Payment</button>
+        <button class='button' {{action 'payment' this}} {{bind-attr disabled=isProcessing}}>Submit Payment</button>
     </ul>
   </fieldset>
 </form>

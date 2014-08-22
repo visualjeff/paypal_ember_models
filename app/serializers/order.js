@@ -75,7 +75,8 @@ export default ApplicationSerializer.extend({
                 countryCode: payload.transactions[0].item_list.shipping_address.country_code,
                 postalCode: payload.transactions[0].item_list.shipping_address.postal_code,
                 phone: payload.transactions[0].item_list.shipping_address.phone,
-                state: payload.transactions[0].item_list.shipping_address.state
+                state: payload.transactions[0].item_list.shipping_address.state,
+                approvalUrl: payload.links[1].href
             }
         };
         return normalizedPayload;

@@ -13,12 +13,13 @@ export default DS.Model.extend({
     tax: DS.attr('string'),
     email: DS.attr('string'),
     description: DS.attr('string'),
-    items: DS.attr('raw'), // Using a raw here because items don't have an id
+    items: DS.attr('raw'), // Using a raw here because items don't have a relationship id
     recipientName: DS.attr('string'),
     line1: DS.attr('string'),
     city: DS.attr('string'),
     countryCode: DS.attr('string'),
     postalCode: DS.attr('string'),
     phone: DS.attr('string'),
-    state: DS.attr('string')
+    state: DS.attr('string'),
+    approvalUrl: DS.attr('string')
 });

@@ -2,7 +2,7 @@
 <div class="small-8 columns">
     <div class="panel">
         <h3>Click Save to exercise paypal's sandbox.</h3>
-        <br><br>
+        <br>
         <form>
             <fieldset>
                 <div class="input-wrapper">
@@ -77,7 +77,7 @@
                 </div>
                 <br>
                 <ul class="button-group right">
-                    <button class='button' {{action 'saveCard' this}}>Save</button>
+                    <button class='button' {{action 'saveCard' this}} {{bind-attr disabled=isProcessing}}>Save</button>
                 </ul>
             </fieldset>
         </form>
@@ -85,7 +85,7 @@
 
     <div class="panel">
         <h3>Returned JSON</h3>
-        <br><br>
+        <br>
         <br>
         <div class="input-wrapper">
             <label for="results">Results:</label>
