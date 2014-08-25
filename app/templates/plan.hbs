@@ -1,0 +1,43 @@
+<br>
+<div class="small-8 columns">
+<div class="panel">
+<h3>Click Submit Plan to exercise paypal's sandbox.</h3>
+<br><br>
+<form>
+<fieldset>
+
+    <div class="input-wrapper">
+        <label for="name">Name:</label>
+        {{view "textfield"
+        type="text"
+        viewName="name"
+        valueBinding="name"
+        disabled="true"
+        size="10"
+        }}
+    </div>
+
+
+    <br>
+<ul class="button-group right">
+    <button class='button' {{action 'createPlan' this}} {{bind-attr disabled=isProcessing}}>Create Plan</button>
+</ul>
+</fieldset>
+</form>
+</div>
+
+<div class="panel">
+    <h3>Returned JSON</h3>
+    <br><br>
+    <div class="input-wrapper">
+        <label for="results">Results:</label>
+        {{view "textarea"
+        name="results"
+        viewName="results"
+        valueBinding="results"
+        size="30"
+        rows="8"
+        }}
+    </div>
+</div>
+</div>

@@ -1,6 +1,6 @@
 import { test, moduleForModel } from 'ember-qunit';
 
-moduleForModel('amount', 'Amount', {
+moduleForModel('payment-definition', 'PaymentDefinition', {
   // Specify the other units that are required for this test.
   needs: []
 });
