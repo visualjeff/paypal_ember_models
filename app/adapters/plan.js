@@ -27,6 +27,10 @@ export default ApplicationAdapter.extend({
         var serializer = store.serializerFor(type.typeKey);
         serializer.serializeIntoHash(data, type, record, { includeId: true });
         data = data.plan; //Customization here.  Only send the sale data.  Not the wrapped sale.
+
+        Ember.Logger.debug("==================================================");
+        Ember.Logger.debug("  data = " + JSON.stringify(data));
+        Ember.Logger.debug("==================================================");
         return this.ajax(this.buildURL('billing-plans'), "POST", { data: data });
     }
 });
