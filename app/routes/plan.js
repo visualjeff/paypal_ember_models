@@ -6,15 +6,15 @@ export default Ember.Route.extend({
             "name": "T-Shirt of the Month Club Plan",
             "description": "Template creation.",
             "type": "fixed",
-            "paymentDefinitionName": "Regular Payments",
-            "paymentDefinitionType": "REGULAR",
-            "paymentDefinitionFrequency": "MONTH",
-            "paymentDefinitionFrequencyInterval": "2",
-            "paymentDefinitionAmount": {
+            "paymentDefinitionsName": "Regular Payments",
+            "paymentDefinitionsType": "REGULAR",
+            "paymentDefinitionsFrequency": "MONTH",
+            "paymentDefinitionsFrequencyInterval": "2",
+            "paymentDefinitionsAmount": {
                 "value": "100",
                 "currency": "USD"
             },
-            "paymentDefinitionCycles": "12",
+            "paymentDefinitionsCycles": "12",
             "paymentDefinitionsChargeModel": [
                 {
                     "type": "SHIPPING",

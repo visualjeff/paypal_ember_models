@@ -1,0 +1,26 @@
+<br>
+<fieldset>
+    <legend>Plans</legend>
+    <table>
+        <thead>
+        <tr>
+            <th width="150">Plan Id</th>
+            <th width="150">Name</th>
+            <th width="150">Description</th>
+            <th width="150">Type</th>
+            <th width="150">Last updated</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each}}
+            <tr>
+                <td>{{id}}</td>
+                <td>{{name}}</td>
+                <td>{{description}}</td>
+                <td>{{type}}</td>
+                <td>{{updateTime}}</td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</fieldset>

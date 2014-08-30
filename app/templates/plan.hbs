@@ -7,25 +7,62 @@
 <fieldset>
 
     <div class="input-wrapper">
-        <label for="name">Name:</label>
-        {{view "textfield"
-        type="text"
-        viewName="name"
-        valueBinding="name"
-        disabled="true"
-        size="10"
-        }}
+        <label for="name">Name:</label>{{view "textfield" type="text" viewName="name" valueBinding="name" disabled="true" size="10" }}
+    </div>
+    <div class="input-wrapper">
+        <label for="description">Description:</label>{{view "textfield" type="text" viewName="description" valueBinding="description" disabled="true" size="10"}}
+    </div>
+    <div class="input-wrapper">
+        <label for="type">Type:</label>{{view "textfield" type="text" viewName="type" valueBinding="type" disabled="true" size="10"}}
+    </div>
+    <div class="input-wrapper">
+        <label for="paymentDefinitionsName">Payment Definitions Name:</label>{{view "textfield" type="text" viewName="paymentDefinitionsName" valueBinding="paymentDefinitionsName" disabled="true" size="10"}}
+    </div>
+    <div class="input-wrapper">
+        <label for="paymentDefinitionsType">Payment Definitions Type:</label>{{view "textfield" type="text" viewName="paymentDefinitionsType" valueBinding="paymentDefinitionsType" disabled="true" size="10"}}
+    </div>
+    <div class="input-wrapper">
+        <label for="paymentDefinitionsFrequency">Payment Definitions Frequency:</label>{{view "textfield" type="text" viewName="paymentDefinitionsFrequency" valueBinding="paymentDefinitionsFrequency" disabled="true" size="10"}}
+    </div>
+    <div class="input-wrapper">
+        <label for="paymentDefinitionsFrequencyInterval">Payment Definitions Interval:</label>{{view "textfield" type="text" viewName="paymentDefinitionsFrequencyInterval" valueBinding="paymentDefinitionsFrequencyInterval" disabled="true" size="10"}}
     </div>
 
+    {{#with paymentDefinitionsAmount}}
+        <div class="input-wrapper">
+            <label for="value">Payment Definitions Value:</label>{{view "textfield" type="text" viewName="value" valueBinding="value" disabled="true" size="10"}}
+        </div>
+        <div class="input-wrapper">
+            <label for="currency">Payment Definitions Currency:</label>{{view "textfield" type="text" viewName="currency" valueBinding="currency" disabled="true" size="10"}}
+        </div>
+    {{/with}}
+
     <div class="input-wrapper">
-        <label for="name">Name:</label>
-        {{view "textfield"
-        type="text"
-        viewName="name"
-        valueBinding="name"
-        disabled="true"
-        size="10"
-        }}
+        <label for="paymentDefinitionsCycles">Payment Definitions Cycles:</label>{{view "textfield" type="text" viewName="paymentDefinitionsCycles" valueBinding="paymentDefinitionsCycles" disabled="true" size="10"}}
+    </div>
+
+    {{#with merchantPreferencesSetupFee}}
+        <div class="input-wrapper">
+            <label for="value">Merchant Preferences Value:</label>{{view "textfield" type="text" viewName="value" valueBinding="value" disabled="true" size="10"}}
+        </div>
+        <div class="input-wrapper">
+            <label for="currrency">Merchant Preferences Currency:</label>{{view "textfield" type="text" viewName="currency" valueBinding="currency" disabled="true" size="10"}}
+        </div>
+    {{/with}}
+    <div class="input-wrapper">
+        <label for="merchantPreferencesReturnUrl">Merchant Preferences Return Url:</label>{{view "textfield" type="text" viewName="merchantPreferencesReturnUrl" valueBinding="merchantPreferencesReturnUrl" disabled="true" size="10"}}
+    </div>
+    <div class="input-wrapper">
+        <label for="merchantPreferencesCancelUrl">Merchant Preferences Cancel Url:</label>{{view "textfield" type="text" viewName="merchantPreferencesCancelUrl" valueBinding="merchantPreferencesCancelUrl" disabled="true" size="10"}}
+    </div>
+    <div class="input-wrapper">
+        <label for="merchantPreferencesAutoBillAmount">Merchant Preferences Auto Bill Amount:</label>{{view "textfield" type="text" viewName="merchantPreferencesAutoBillAmount" valueBinding="merchantPreferencesAutoBillAmount" disabled="true" size="10"}}
+    </div>
+    <div class="input-wrapper">
+        <label for="merchantPreferencesInitialFailAmountAction">Merchant Preferences Initial Fail Amount Action:</label>{{view "textfield" type="text" viewName="merchantPreferencesInitialFailAmountAction" valueBinding="merchantPreferencesInitialFailAmountAction" disabled="true" size="10"}}
+    </div>
+    <div class="input-wrapper">
+        <label for="merchantPreferencesMaxFailAttempts">Merchant Preferences Max Fail Attempts:</label>{{view "textfield" type="text" viewName="merchantPreferencesMaxFailAttempts" valueBinding="merchantPreferencesMaxFailAttempts" disabled="true" size="10"}}
     </div>
 
 

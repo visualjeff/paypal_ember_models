@@ -10,15 +10,15 @@ export default ApplicationSerializer.extend({
             "type": record.get('type'),
             payment_definitions: [
                 {
-                    "name": record.get('paymentDefinitionName'),
-                    "type": record.get('paymentDefinitionType'),
-                    "frequency": record.get('paymentDefinitionFrequency'),
-                    "frequency_interval": record.get('paymentDefinitionFrequencyInterval'),
+                    "name": record.get('paymentDefinitionsName'),
+                    "type": record.get('paymentDefinitionsType'),
+                    "frequency": record.get('paymentDefinitionsFrequency'),
+                    "frequency_interval": record.get('paymentDefinitionsFrequencyInterval'),
                     "amount": {
-                        "value": record.get('paymentDefinitionAmount').value,
-                        "currency": record.get('paymentDefinitionAmount').currency
+                        "value": record.get('paymentDefinitionsAmount').value,
+                        "currency": record.get('paymentDefinitionsAmount').currency
                     },
-                    "cycles": record.get('paymentDefinitionCycles'),
+                    "cycles": record.get('paymentDefinitionsCycles'),
                     "charge_models": []
                 }
             ],
@@ -34,7 +34,6 @@ export default ApplicationSerializer.extend({
                 "max_fail_attempts": record.get('merchantPreferencesMaxFailAttempts')
             }
         };
-
         record.get('paymentDefinitionsChargeModel').forEach(function(chargeModel){
             var cm = {
                 "type": chargeModel.type,

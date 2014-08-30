@@ -28,6 +28,7 @@ Router.map(function() {
   this.route('creditCards');
   this.route('card', { path: '/card/:id' });
   this.route('plan');
+  this.route('plans');
 });
 
 export default Router;
