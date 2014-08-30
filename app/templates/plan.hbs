@@ -15,6 +15,7 @@
     <div class="input-wrapper">
         <label for="type">Type:</label>{{view "textfield" type="text" viewName="type" valueBinding="type" disabled="true" size="10"}}
     </div>
+    <div class="panel">
     <div class="input-wrapper">
         <label for="paymentDefinitionsName">Payment Definitions Name:</label>{{view "textfield" type="text" viewName="paymentDefinitionsName" valueBinding="paymentDefinitionsName" disabled="true" size="10"}}
     </div>
@@ -40,7 +41,26 @@
     <div class="input-wrapper">
         <label for="paymentDefinitionsCycles">Payment Definitions Cycles:</label>{{view "textfield" type="text" viewName="paymentDefinitionsCycles" valueBinding="paymentDefinitionsCycles" disabled="true" size="10"}}
     </div>
+    </div>
 
+    {{#each paymentDefinitionsChargeModel}}
+    <div class="panel">
+        <div class="input-wrapper">
+            <label for="type">Charge Model:</label>{{view "textfield" type="text" viewName="type" valueBinding="type" disabled="true" size="10"}}
+        </div>
+        {{#with amount}}
+            <div class="input-wrapper">
+                <label for="value">Value:</label>{{view "textfield" type="text" viewName="value" valueBinding="value" disabled="true" size="10"}}
+            </div>
+            <div class="input-wrapper">
+                <label for="currrency">Currency:</label>{{view "textfield" type="text" viewName="currency" valueBinding="currency" disabled="true" size="10"}}
+            </div>
+        {{/with}}
+    </div>
+    {{/each}}
+
+
+    <div class="panel">
     {{#with merchantPreferencesSetupFee}}
         <div class="input-wrapper">
             <label for="value">Merchant Preferences Value:</label>{{view "textfield" type="text" viewName="value" valueBinding="value" disabled="true" size="10"}}
@@ -64,8 +84,7 @@
     <div class="input-wrapper">
         <label for="merchantPreferencesMaxFailAttempts">Merchant Preferences Max Fail Attempts:</label>{{view "textfield" type="text" viewName="merchantPreferencesMaxFailAttempts" valueBinding="merchantPreferencesMaxFailAttempts" disabled="true" size="10"}}
     </div>
-
-
+    </div>
     <br>
 <ul class="button-group right">
     <button class='button' {{action 'createPlan' this}} {{bind-attr disabled=isProcessing}}>Create Plan</button>
