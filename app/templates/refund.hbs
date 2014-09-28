@@ -3,7 +3,7 @@
     <div class="panel">
         <h3>Refund sale 51P59144AK5723702?  Click Refund button...</h3>
         <br><br>
-        <form>
+        <form {{action 'refund' this on="submit"}}>
             <fieldset>
                 <div class="input-wrapper">
                     <label for="id">Transaction ID:</label>
@@ -82,7 +82,7 @@
                 </div>
                 <br>
                 <ul class="button-group right">
-                    <button class='button' {{action 'refund' this}} {{bind-attr disabled=isProcessing}}>Submit Refund</button>
+                    <button type="submit" class="small radius" {{bind-attr disabled=isProcessing}}>Submit Refund</button>
                 </ul>
             </fieldset>
         </form>

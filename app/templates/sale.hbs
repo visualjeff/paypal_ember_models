@@ -5,7 +5,7 @@
         <h3>Paypal sale: {{id}}</h3>
         <br><br>
 
-        <form>
+        <form {{action 'refund' this on="submit"}}>
             <fieldset>
 
         <div class="input-wrapper">
@@ -66,7 +66,7 @@
 
         {{#if canRefund}}
         <ul class="button-group right">
-            <button class='button' {{action 'refund' this}} {{bind-attr disabled=isProcessing}}>Request Refund</button>
+            <button type="submit" class="small radius" {{bind-attr disabled=isProcessing}}>Request Refund</button>
         </ul>
         {{/if}}
             </fieldset>

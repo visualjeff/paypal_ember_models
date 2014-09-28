@@ -3,7 +3,7 @@
 <div class="panel">
 <h3>Click Submit Order to exercise paypal's sandbox.</h3>
 <br><br>
-<form>
+<form {{action 'createOrder' this on="submit"}}>
 <fieldset>
 <div class="input-wrapper">
     <label for="intent">Intent:</label>
@@ -203,7 +203,7 @@
 
 <br>
 <ul class="button-group right">
-    <button class='button' {{action 'createOrder' this}}  {{bind-attr disabled=isProcessing}}>Submit Order</button>
+    <button type="submit" class="small radius"  {{bind-attr disabled=isProcessing}}>Submit Order</button>
 </ul>
 </fieldset>
 </form>

@@ -3,7 +3,7 @@
     <div class="panel">
         <h3>Click update to exercise paypal's sandbox.</h3>
         <br>
-        <form>
+        <form {{! action 'updateCard' this on="submit"}}>
             <fieldset>
                 <div class="input-wrapper">
                     <label for="payerId">payerId:</label>
@@ -75,7 +75,7 @@
                 </div>
                 <br>
                 <!-- ul class="button-group right">
-                    <button class='button' {{! action 'updateCard' this}} {{! bind-attr disabled=isProcessing}}>Update</button>
+                    <button class="small radius"  {{! bind-attr disabled=isProcessing}}>Update</button>
                 </ul -->
             </fieldset>
         </form>
